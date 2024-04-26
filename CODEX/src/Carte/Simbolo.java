@@ -1,0 +1,5 @@
+package Carte;
+
+public enum Simbolo {
+	PIANTA, ANIMALE, INSETTO, FUNGO, PIUMA, BOCCETTA, PERGAMENA, VUOTO, NO_ANGOLO;
+}
