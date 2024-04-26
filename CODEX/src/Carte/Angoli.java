@@ -25,4 +25,4 @@ public class Angoli {
 		return "("+this.simbolo+"|visibile " + Boolean.toString(visibile)+ "|connesso " + Integer.toString(connesso) + ")";
 	}
 }
-
+/*test*/
