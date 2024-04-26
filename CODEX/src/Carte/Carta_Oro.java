@@ -1,12 +1,13 @@
 package Carte;
 
-public class CartaOro extends Carte {
+
+public class Carta_Oro extends Carta {
 private final int punti;
 private final Integer[] costo;
 private final Moltiplicatore moltiplicatore;
-	public CartaOro(Simbolo simbolo, Simbolo SiNordOvest, Simbolo SiSudOvest, Simbolo SiNordEst, Simbolo SiSudEst,
-			int punti,int[] costo_afip,Moltiplicatore moltiplicatore) {
-		super(simbolo, SiNordOvest, SiSudOvest, SiNordEst, SiSudEst);
+	public Carta_Oro(Simbolo simbolo, Simbolo SiNordOvest, Simbolo SiSudOvest, Simbolo SiNordEst, Simbolo SiSudEst,
+			int punti,int[] costo_afip,Moltiplicatore moltiplicatore,String FileFronte,String FileRetro) {
+		super(simbolo, SiNordOvest, SiSudOvest, SiNordEst, SiSudEst,FileFronte,FileRetro);
 		this.costo=new Integer[4];
 		this.punti=punti;
 		for(int i=0;i<4;i++) {
@@ -32,9 +33,9 @@ private final Moltiplicatore moltiplicatore;
 		return costo;
 	}
 	
-	@Override
-	public int requisiti() {
-		return ((costo[3] & 0xF) << 12) + ((costo[2] & 0xF) << 8) + ((costo[1] & 0xF) << 4) + ((costo[0] & 0xF));
+
+	public int requisiti(int costo) {
+	return this.costo[costo];
 	}	
 	
 	public String toString() {

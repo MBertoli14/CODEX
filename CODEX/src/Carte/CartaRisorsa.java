@@ -1,15 +1,16 @@
 package Carte;
 
-public class CartaRisorsa extends Carte {
+public class CartaRisorsa extends Carta {
 private int punti;
 
-	public CartaRisorsa(Simbolo simbolo, Simbolo SiNordOvest, Simbolo SiSudOvest, Simbolo SiNordEst, Simbolo SiSudEst,int punti) {
-		super(simbolo, SiNordOvest, SiSudOvest, SiNordEst, SiSudEst);
+	public CartaRisorsa(Simbolo simbolo, Simbolo Sang1_NordOvest, Simbolo Sang2_SudOvest, Simbolo Sang3_NordEst, Simbolo Sang4_SudEst,int punti,String filefronte, String fileretro) {
+		super(simbolo, Sang1_NordOvest, Sang2_SudOvest, Sang3_NordEst, Sang4_SudEst,filefronte,fileretro);
 		this.punti=punti;
+		//this.punti_fronte=punti;
 	}
 	
 	@Override
-	public int getPunti() { //punti della carta da settare solo al costruttore
+	public int getPunti() { 
 		if (fronte == true) 
 			return punti;
 		else
@@ -23,7 +24,6 @@ private int punti;
 			setFronte();
 		} else {
 			super.fronte=false;
-			punti=0;
 			setRetro();
 		}
 	}	
