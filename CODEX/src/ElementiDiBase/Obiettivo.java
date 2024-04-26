@@ -1,0 +1,5 @@
+package ElementiDiBase;
+
+public enum Obiettivo {
+	COPPIA, TRIO, TRIO_UNICO, SCALA_ASCENDENTE, SCALA_DISCENDENTE, L, LROVESCIO, SETTE, SETTE_ROVESCIO;
+}
