@@ -4,14 +4,12 @@ import Carte.*;
 
 import java. util. ArrayList;
 
-import java. util. ArrayList;
-
 public class Giocatore {
 private int id;
 private String Nickname;
-private ArrayList<Carta> mazzoMano;		//List
-private ArrayList<Carta> MazzoGiocato;		//List
-private ArrayList<CartaObbiettivo> obbiettivi;
+public ArrayList<Carta> mazzoMano;		//List
+public ArrayList<Carta> MazzoGiocato;		//List
+public ArrayList<CartaObbiettivo> obbiettivi;
 private int punti;
 private int ScoreboardSimboli[];
 
