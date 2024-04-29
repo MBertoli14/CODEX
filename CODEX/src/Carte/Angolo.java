@@ -51,4 +51,4 @@ public class Angolo {
 		return risultato;
 		
 	}
-}
+}/**/
