@@ -11,8 +11,8 @@ public class Carta {
 	protected Simbolo simboli_fronte[];
 	int Nsimboli_esposti[];
 	protected boolean fronte;
-	int Xrel;
-	int Yrel;
+	private int Xrel;
+	private int Yrel;
 	String filefronte; //GR
 	BufferedImage immagineFronte; //GR
     String fileretro; //
@@ -54,29 +54,6 @@ public class Carta {
 	}
 	
 
-	protected void AggiornaSimboliEsposti() {	
-		for(int i=0;i<7;i++)
-			Nsimboli_esposti[i]=0;
-			
-		
-		if (fronte) {
-		    
-				for (Simbolo s : Simbolo.values()) {
-					   if (s==Simbolo.VUOTO)
-						   break;
-					   
-					   for(int i = 0; i<4; i++) {
-						   if(angoli[i].simbolo == s)
-							   Nsimboli_esposti[s.ordinal()]++;	   
-					   }
-					}
-		} else {
-			    int idx = simbolo.ordinal();
-			    if (idx<7)
-			    	Nsimboli_esposti[idx]++;
-		}
-	}	
-
 
 	protected void setFronte(){
 		
@@ -102,6 +79,28 @@ public class Carta {
 			setRetro();
 		}
 	}
+	protected void AggiornaSimboliEsposti() {
+		for(int i=0;i<7;i++)
+			Nsimboli_esposti[i]=0;
+			
+		
+		if (fronte) {
+		    
+				for (Simbolo s : Simbolo.values()) {
+					   if (s==Simbolo.VUOTO)
+						   break;
+					   
+					   for(int i = 0; i<4; i++) {
+						   if(angoli[i].simbolo == s)
+							   Nsimboli_esposti[s.ordinal()]++;	   
+					   }
+					}
+		} else {
+			    int idx = simbolo.ordinal();
+			    if (idx<7)
+			    	Nsimboli_esposti[idx]++;
+		}
+	}	
 	
 	public Simbolo getSimbolo() {
 		return simbolo;
