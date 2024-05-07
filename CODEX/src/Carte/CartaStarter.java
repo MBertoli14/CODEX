@@ -13,10 +13,10 @@ protected void AggiornaSimboliEsposti_Extra() {
 		    int idx; 
 		    idx = simbolo2.ordinal();
 		    if (idx<7)
-		    	Nsimboli_esposti[idx]++;
+		    	nSimboli_esposti[idx]++;
 		    idx = simbolo3.ordinal();
 		    if (idx<7)
-		    	Nsimboli_esposti[idx]++;
+		    	nSimboli_esposti[idx]++;
 	} 
 }    
 

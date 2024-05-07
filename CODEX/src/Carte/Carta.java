@@ -9,10 +9,10 @@ public class Carta {
 	protected Simbolo simbolo;
 	public Angolo angoli[]; //per accesso classe derivata o usare metodo ?
 	protected Simbolo simboli_fronte[];
-	int Nsimboli_esposti[];
+	int nSimboli_esposti[];
 	protected boolean fronte;
-	int Xrel;
-	int Yrel;
+	int xRel;
+	int yRel;
 	String filefronte; //GR
 	BufferedImage immagineFronte; //GR
     String fileretro; //
@@ -33,13 +33,13 @@ public class Carta {
 		this.simboli_fronte[1]=Sang2_SudOvest;
 		this.simboli_fronte[2]=Sang3_NordEst;
 		this.simboli_fronte[3]=Sang4_SudEst;
-		Nsimboli_esposti = new int[7];
+		nSimboli_esposti = new int[7];
 		this.filefronte = filefronte;
 		this.fileretro = fileretro;
 		this.fronte = true;
 		AggiornaSimboliEsposti();
-		Xrel=0; 
-		Yrel=0;
+		xRel=0; 
+		yRel=0;
 		
 	    try { 
 	    	  immagineFronte = ImageIO.read(new File(filefronte));
@@ -56,7 +56,7 @@ public class Carta {
 
 	protected void AggiornaSimboliEsposti() {	
 		for(int i=0;i<7;i++)
-			Nsimboli_esposti[i]=0;
+			nSimboli_esposti[i]=0;
 			
 		
 		if (fronte) {
@@ -67,13 +67,13 @@ public class Carta {
 					   
 					   for(int i = 0; i<4; i++) {
 						   if(angoli[i].simbolo == s)
-							   Nsimboli_esposti[s.ordinal()]++;	   
+							   nSimboli_esposti[s.ordinal()]++;	   
 					   }
 					}
 		} else {
 			    int idx = simbolo.ordinal();
 			    if (idx<7)
-			    	Nsimboli_esposti[idx]++;
+			    	nSimboli_esposti[idx]++;
 		}
 	}	
 
@@ -127,23 +127,23 @@ public class Carta {
 	}
 	
 	public int[] getSimboliVisibili() {
-		return Nsimboli_esposti;
+		return nSimboli_esposti;
 	}
 
 	public void setXrel(int x) {
-		Xrel=x; 		
+		xRel=x; 		
 	}
 	
 	public void setYrel(int y) {
-		Yrel=y;		
+		yRel=y;		
 	}
 	
 	public int getXrel() {
-		return Xrel; 		
+		return xRel; 		
 	}
 	
 	public int getYrel() {
-		return Yrel;		
+		return yRel;		
 	}	
 		
 	public String toStringSimbolo() {

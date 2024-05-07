@@ -5,6 +5,7 @@ public class Carta_Oro extends Carta {
 private final int punti;
 private final Integer[] costo;
 private final Moltiplicatore moltiplicatore;
+
 	public Carta_Oro(Simbolo simbolo, Simbolo SiNordOvest, Simbolo SiSudOvest, Simbolo SiNordEst, Simbolo SiSudEst,
 			int punti,int[] costo_afip,Moltiplicatore moltiplicatore,String FileFronte,String FileRetro) {
 		super(simbolo, SiNordOvest, SiSudOvest, SiNordEst, SiSudEst,FileFronte,FileRetro);
