@@ -26,7 +26,7 @@ import java.io.IOException;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-public class codex {
+public class Codex {
 
 	//Cards to initialize	
 
@@ -181,7 +181,7 @@ public class codex {
 			try {
 					valoreVerificato=sc.nextInt();		
 				}catch (InputMismatchException e) {
-					System.out.println("il valore inserito non e' invalido ");
+					System.out.println("il valore inserito e' invalido ");
 					return -1;
 				}
 		return valoreVerificato;
