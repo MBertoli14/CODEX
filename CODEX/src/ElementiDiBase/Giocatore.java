@@ -263,7 +263,7 @@ public void setObbiettivo(CartaObbiettivo C) {
 		this.punti = punti;
 	}
 	
-	public int CalcoloObbiettivo() {
+	public void CalcoloObbiettivo() {
 		int indice1 = 0;
 		int indice2 = 0;
 		int indice3 = 0;
@@ -275,50 +275,54 @@ public void setObbiettivo(CartaObbiettivo C) {
 			switch(obbiettivi.get(i).getObbiettivo()) { 
 				case COPPIA:
 					System.out.println("Valutazione coppia");
-					if(scoreboardSimboli[obbiettivi.get(0).getSimbolo().ordinal()]>2) {
-						if(scoreboardSimboli[obbiettivi.get(0).getSimbolo().ordinal()]%2!=0) {
+					if(scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()]>=2) {
+						if(scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()]%2!=0) {
 							int sottrazione =scoreboardSimboli[obbiettivi.get(0).getSimbolo().ordinal()]%2;
-							scoreboardSimboli[obbiettivi.get(0).getSimbolo().ordinal()]-=sottrazione;
+							scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()]-=sottrazione;
 						}
-						punti+=(scoreboardSimboli[obbiettivi.get(0).getSimbolo().ordinal()]/2)*obbiettivi.get(0).getPunti();
+						this.punti+=(scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()]/2)*obbiettivi.get(i).getPunti();
+						System.out.println("aggiunta punti coppia"+" "+obbiettivi.get(i).getSimbolo());
 					}
 					break;
 				case TRIO:
-					System.out.println("trio");
-					if(scoreboardSimboli[obbiettivi.get(0).getSimbolo().ordinal()]>3) {
-						if(scoreboardSimboli[obbiettivi.get(0).getSimbolo().ordinal()]%3!=0) {
-							int sottrazione =scoreboardSimboli[obbiettivi.get(0).getSimbolo().ordinal()]%3;
-							scoreboardSimboli[obbiettivi.get(0).getSimbolo().ordinal()]-=sottrazione;
+					System.out.println("Valutazione trio");
+					if(scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()]>=3) {
+						if(scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()]%3!=0) {
+							int sottrazione =scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()]%3;
+							scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()]-=sottrazione;
 						}
-						punti+=(scoreboardSimboli[obbiettivi.get(0).getSimbolo().ordinal()]/3)*obbiettivi.get(0).getPunti();
+						this.punti+=(scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()]/3)*obbiettivi.get(i).getPunti();
+						System.out.println("aggiunta punti trio di "+" "+obbiettivi.get(i).getSimbolo());
 					}
 					break;
 				case TRIO_UNICO:
 					System.out.println("trio unico");
-					int NPiume=scoreboardSimboli[obbiettivi.get(0).getSimbolo().ordinal()];
-					int NBoccette=scoreboardSimboli[obbiettivi.get(0).getSimbolo().ordinal()+1];
-					int NPergamene=scoreboardSimboli[obbiettivi.get(0).getSimbolo().ordinal()+2];
-					if(NPiume>1&&NBoccette>1&&NPergamene>1) {
+					int NPiume=scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()];
+					int NBoccette=scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()+1];
+					int NPergamene=scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()+2];
+					if(NPiume>=1&&NBoccette>=1&&NPergamene>=1) {
 						if(NPiume!=NBoccette&& NBoccette!= NPergamene&& NPergamene!= NPiume ) {
 							int arr[] ={NPiume,NBoccette,NPergamene};
 							int min=NPiume;
-							for(int c=0;i<3;c++) {
-								if(arr[i]<min) {
+							for(int c=0;c<3;c++) {
+								if(arr[c]<min) {
 									min=arr[c];
 								}
 							}
-							punti+=min*obbiettivi.get(0).getPunti();
+							this.punti+=min*obbiettivi.get(i).getPunti();
+							System.out.println("aggiunta punti trio unico");
 						}
 						else {
-							punti+=(NPiume)*obbiettivi.get(0).getPunti();	
+							this.punti+=(NPiume)*obbiettivi.get(i).getPunti();	
+							System.out.println("aggiunta punti trio unico");
 						}
 		}
 					break;
-				case SCALA_ASCENDENTE:	
+					case SCALA_ASCENDENTE:	
 					System.out.println("Valutazione scala scendente");
 					
 					if ((obbiettivi.get(i).getSimbolo() != Simbolo.FUNGO) && (obbiettivi.get(i).getSimbolo() != Simbolo.ANIMALE))
-						return 0;
+						break;
 					
 					for (indice1=0;indice1<(NCarte);indice1++) {
 						
@@ -362,7 +366,7 @@ public void setObbiettivo(CartaObbiettivo C) {
 					System.out.println("Valutazione scala discendente");
 					
 					if ((obbiettivi.get(i).getSimbolo() != Simbolo.INSETTO) && (obbiettivi.get(i).getSimbolo() != Simbolo.PIANTA))
-						return 0;		
+						break;		
 					
 					for (indice1=0;indice1<(NCarte);indice1++) {
 						
@@ -578,6 +582,6 @@ public void setObbiettivo(CartaObbiettivo C) {
 			
 		}
 		
-		return this.punti;
+
 	}
 }

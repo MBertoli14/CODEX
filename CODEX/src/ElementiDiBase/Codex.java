@@ -168,7 +168,7 @@ public class Codex {
 		carteObbiettivo.add(new CartaObbiettivo(Simbolo.ANIMALE,Obbiettivo.SETTE_ROVESCIO ,3));
 		carteObbiettivo.add(new CartaObbiettivo(Simbolo.FUNGO,Obbiettivo.L ,3));
 		carteObbiettivo.add(new CartaObbiettivo(Simbolo.PIANTA,Obbiettivo.L_ROVESCIO ,3));
-		carteObbiettivo.add(new CartaObbiettivo(Simbolo.VUOTO,Obbiettivo.TRIO_UNICO ,3));
+		carteObbiettivo.add(new CartaObbiettivo(Simbolo.PIUMA,Obbiettivo.TRIO_UNICO ,3));
 		carteObbiettivo.add(new CartaObbiettivo(Simbolo.BOCCETTA,Obbiettivo.COPPIA ,2));
 		carteObbiettivo.add(new CartaObbiettivo(Simbolo.PERGAMENA,Obbiettivo.COPPIA,2));
 		carteObbiettivo.add(new CartaObbiettivo(Simbolo.PIUMA,Obbiettivo.COPPIA ,2));
