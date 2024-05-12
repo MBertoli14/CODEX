@@ -274,29 +274,24 @@ public void setObbiettivo(CartaObbiettivo C) {
 			int incremento = 0;
 			switch(obbiettivi.get(i).getObbiettivo()) { 
 				case COPPIA:
-					System.out.println("Valutazione coppia");
 					if(scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()]>=2) {
 						if(scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()]%2!=0) {
 							int sottrazione =scoreboardSimboli[obbiettivi.get(0).getSimbolo().ordinal()]%2;
 							scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()]-=sottrazione;
 						}
 						this.punti+=(scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()]/2)*obbiettivi.get(i).getPunti();
-						System.out.println("aggiunta punti coppia"+" "+obbiettivi.get(i).getSimbolo());
 					}
 					break;
 				case TRIO:
-					System.out.println("Valutazione trio");
 					if(scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()]>=3) {
 						if(scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()]%3!=0) {
 							int sottrazione =scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()]%3;
 							scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()]-=sottrazione;
 						}
 						this.punti+=(scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()]/3)*obbiettivi.get(i).getPunti();
-						System.out.println("aggiunta punti trio di "+" "+obbiettivi.get(i).getSimbolo());
 					}
 					break;
 				case TRIO_UNICO:
-					System.out.println("trio unico");
 					int NPiume=scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()];
 					int NBoccette=scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()+1];
 					int NPergamene=scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()+2];
@@ -310,11 +305,9 @@ public void setObbiettivo(CartaObbiettivo C) {
 								}
 							}
 							this.punti+=min*obbiettivi.get(i).getPunti();
-							System.out.println("aggiunta punti trio unico");
 						}
 						else {
 							this.punti+=(NPiume)*obbiettivi.get(i).getPunti();	
-							System.out.println("aggiunta punti trio unico");
 						}
 		}
 					break;
