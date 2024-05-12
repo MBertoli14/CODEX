@@ -289,12 +289,11 @@ public class Codex {
 		    
 		    public mypanel() {
 		      super();
-		      //this.M = Maz;
 			    try {
 			      	background = ImageIO.read(new File("src/ElementiDiBase/immagini/Tablebackground3.jpg"));
 			    } catch (Exception e) {
 				      System.out.println("Exception while loading image." + e);
-				}			      
+				}	
 		    }
 		    
 		    public void setMazzo(ArrayList<Carta> Maz) {
@@ -520,16 +519,24 @@ public void play() {
 				  giocatori.get(i).CalcoloObbiettivo();
 				}			
 			
+			int punteggioVincitore=giocatori.get(0).getPunti();
+			int vincitore=0;
+			for(int i=0;i<nPlayer;i++) {
+				 if(giocatori.get(i).getPunti()>punteggioVincitore) {
+					 punteggioVincitore=giocatori.get(i).getPunti();
+					 vincitore=i;
+				 }
+			}
+			System.out.println("Il vincitore e' "+giocatori.get(vincitore)+"!!!");
 			MostraPunteggio();	
 		
-
+			
 		
 	}
 
 	//GR
 	private static JFrame buildFrame() {
 	    JFrame frame = new JFrame();
-	    frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 	    frame.setSize(900, 900);
 	    frame.setVisible(false);
 	    return frame;
