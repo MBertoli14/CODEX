@@ -321,11 +321,8 @@ public void setObbiettivo(CartaObbiettivo C) {
 					case SCALA_ASCENDENTE:	
 					System.out.println("Valutazione scala scendente");
 					
-					if ((obbiettivi.get(i).getSimbolo() != Simbolo.FUNGO) && (obbiettivi.get(i).getSimbolo() != Simbolo.ANIMALE))
-						break;
-					
+					if ((obbiettivi.get(i).getSimbolo() == Simbolo.FUNGO) || (obbiettivi.get(i).getSimbolo() == Simbolo.ANIMALE)) {
 					for (indice1=0;indice1<(NCarte);indice1++) {
-						
 						if ((mazzoGiocato.get(indice1).getSimbolo()== obbiettivi.get(i).getSimbolo()) && (!mazzoGiocato.get(indice1).getClass().getName().contains("Starter")) )  {
 							
 							    int X1 = mazzoGiocato.get(indice1).getXrel();
@@ -360,16 +357,14 @@ public void setObbiettivo(CartaObbiettivo C) {
 					 }
 					incremento += p * obbiettivi.get(i).getPunti();
 					punti+= incremento;
-					if (incremento > 0)
+					if (incremento > 0);
+					}	
 					break;
 				case SCALA_DISCENDENTE:
 					System.out.println("Valutazione scala discendente");
 					
-					if ((obbiettivi.get(i).getSimbolo() != Simbolo.INSETTO) && (obbiettivi.get(i).getSimbolo() != Simbolo.PIANTA))
-						break;		
-					
-					for (indice1=0;indice1<(NCarte);indice1++) {
-						
+					if ((obbiettivi.get(i).getSimbolo() == Simbolo.INSETTO) || (obbiettivi.get(i).getSimbolo() == Simbolo.PIANTA)) {
+					for (indice1=0;indice1<(NCarte);indice1++) {	
 						if ((mazzoGiocato.get(indice1).getSimbolo()== obbiettivi.get(i).getSimbolo()) && (!mazzoGiocato.get(indice1).getClass().getName().contains("Starter")) ) {
 							
 							    int X1 = mazzoGiocato.get(indice1).getXrel();
@@ -405,7 +400,8 @@ public void setObbiettivo(CartaObbiettivo C) {
 					incremento += p * obbiettivi.get(i).getPunti();
 					this.punti+= incremento;
 					if (incremento > 0)
-						System.out.println("+ " + incremento + " punti per obbiettivo SCALE DISCENDENTI");					
+						System.out.println("+ " + incremento + " punti per obbiettivo SCALE DISCENDENTI");	
+					}
 					break;
 				case L:
 					System.out.println("Selettore L");
