@@ -10,7 +10,7 @@ private String nickname;
 private ArrayList<Carta> mazzoMano;		//List
 private ArrayList<Carta> mazzoGiocato;		//List
 private ArrayList<CartaObbiettivo> obbiettivi;
-private int punti;
+protected int punti;
 private int scoreboardSimboli[];
 
 public Giocatore(int id,String Nick) {
@@ -274,6 +274,7 @@ public void setObbiettivo(CartaObbiettivo C) {
 			int incremento = 0;
 			switch(obbiettivi.get(i).getObbiettivo()) { 
 				case COPPIA:
+					System.out.println("Valutazione coppia");
 					if(scoreboardSimboli[obbiettivi.get(0).getSimbolo().ordinal()]>2) {
 						if(scoreboardSimboli[obbiettivi.get(0).getSimbolo().ordinal()]%2!=0) {
 							int sottrazione =scoreboardSimboli[obbiettivi.get(0).getSimbolo().ordinal()]%2;
@@ -283,6 +284,7 @@ public void setObbiettivo(CartaObbiettivo C) {
 					}
 					break;
 				case TRIO:
+					System.out.println("trio");
 					if(scoreboardSimboli[obbiettivi.get(0).getSimbolo().ordinal()]>3) {
 						if(scoreboardSimboli[obbiettivi.get(0).getSimbolo().ordinal()]%3!=0) {
 							int sottrazione =scoreboardSimboli[obbiettivi.get(0).getSimbolo().ordinal()]%3;
@@ -292,6 +294,7 @@ public void setObbiettivo(CartaObbiettivo C) {
 					}
 					break;
 				case TRIO_UNICO:
+					System.out.println("trio unico");
 					int NPiume=scoreboardSimboli[obbiettivi.get(0).getSimbolo().ordinal()];
 					int NBoccette=scoreboardSimboli[obbiettivi.get(0).getSimbolo().ordinal()+1];
 					int NPergamene=scoreboardSimboli[obbiettivi.get(0).getSimbolo().ordinal()+2];
@@ -311,10 +314,7 @@ public void setObbiettivo(CartaObbiettivo C) {
 						}
 		}
 					break;
-				case SCALA_ASCENDENTE:
-					System.out.println("Selettore scala ascendente");
-					
-					
+				case SCALA_ASCENDENTE:	
 					System.out.println("Valutazione scala scendente");
 					
 					if ((obbiettivi.get(i).getSimbolo() != Simbolo.FUNGO) && (obbiettivi.get(i).getSimbolo() != Simbolo.ANIMALE))
@@ -357,7 +357,6 @@ public void setObbiettivo(CartaObbiettivo C) {
 					incremento += p * obbiettivi.get(i).getPunti();
 					punti+= incremento;
 					if (incremento > 0)
-						System.out.println("+ " + incremento + " punti per obbiettivo SCALE ASCENDENTI");
 					break;
 				case SCALA_DISCENDENTE:
 					System.out.println("Valutazione scala discendente");
@@ -445,8 +444,7 @@ public void setObbiettivo(CartaObbiettivo C) {
 					 }
 					incremento += (p * obbiettivi.get(i).getPunti());
 					this.punti+= incremento;
-					if (incremento > 0)
-						System.out.println("+ " + incremento + " punti per obbiettivo L");					
+					if (incremento > 0)					
 					break;
 				case L_ROVESCIO:
 					System.out.println("Selettore L rovecio");
@@ -488,8 +486,7 @@ public void setObbiettivo(CartaObbiettivo C) {
 					 }
 					incremento += (p* obbiettivi.get(i).getPunti());
 					this.punti+= incremento;
-					if (incremento > 0)
-						System.out.println("+ " + incremento + " punti per obbiettivo L ROVESCIO");					
+					if (incremento > 0)					
 					break;
 				case SETTE:
 					System.out.println("Selettore sette");
@@ -532,8 +529,7 @@ public void setObbiettivo(CartaObbiettivo C) {
 					
 					incremento += (p* obbiettivi.get(i).getPunti()); //puntiSette e gli altri dovrebbero essere private ?
 					this.punti+= incremento;
-					if (incremento > 0)
-						System.out.println("+ " + incremento + " punti per obbiettivo SETTE");					
+					if (incremento > 0)					
 					break;
 				case SETTE_ROVESCIO:
 					System.out.println("Selettore sette rovescio");

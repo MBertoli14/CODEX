@@ -342,12 +342,12 @@ public void play() {
 	frame.setVisible(false);
 	
 	//Mischia i quattro mazzi di carte
-	/*
-	Collections.shuffle(CarteRisorsa, new Random(System.currentTimeMillis()));
+	
+	Collections.shuffle(carteRisorsa, new Random(System.currentTimeMillis()));
 	Collections.shuffle(carteOro, new Random(System.currentTimeMillis()));
-	Collections.shuffle(CarteStarter, new Random(System.currentTimeMillis()));
-	Collections.shuffle(CarteObbiettivo, new Random(System.currentTimeMillis()));
-	*/
+	Collections.shuffle(carteStarter, new Random(System.currentTimeMillis()));
+	Collections.shuffle(carteObbiettivo, new Random(System.currentTimeMillis()));
+	
 	
 	Scanner sc=new Scanner(System.in);
 	String playerName;
@@ -527,7 +527,7 @@ public void play() {
 					 vincitore=i;
 				 }
 			}
-			System.out.println("Il vincitore e' "+giocatori.get(vincitore)+"!!!");
+			System.out.println("Il vincitore e' "+giocatori.get(vincitore).getNome()+"!!!");
 			MostraPunteggio();	
 		
 			
