@@ -5,16 +5,17 @@ import Carte.*;
 import java. util. ArrayList;
 
 public class Giocatore implements GiocataRegolare {
-private int id;
 private String nickname;
 private ArrayList<Carta> mazzoMano;		//List
 private ArrayList<Carta> mazzoGiocato;		//List
 private ArrayList<CartaObbiettivo> obbiettivi;
 protected int punti;
 private int scoreboardSimboli[];
-
-public Giocatore(int id,String Nick) {
-	this.id=id;
+/**
+ * Costruttore del giocatore
+ * @param Nick nickname del giocatore 
+ */
+public Giocatore(String Nick) {
 	this.nickname=Nick;
 	this.punti = 0;
 	this.mazzoMano = new ArrayList<Carta>();		//List
@@ -25,22 +26,43 @@ public Giocatore(int id,String Nick) {
 		scoreboardSimboli[i]=0;
 	}
 
+/**
+ * Permette di aggiungere una carta al mazzoMano del giocatore
+ * @param C carta inserita nel mazzoMano
+ */
 public void setMazzoMano(Carta C) {
 	mazzoMano.add(C);
 }
 
+/**
+ * Permette di ootenere la posizione di una carta specifica
+ * @param pos posizione della carta restituita da mazzoMano
+ * @return
+ */
 public Carta getMazzoMano(int pos) {
 	return mazzoMano.get(pos);
 }
 
+/**
+ * Permette di rimuovere una carta dal mazzoMano
+ * @param pos posizione della carta rimossa
+ * @return
+ */
 public Carta removeMazzoMano(int pos) {
 	return mazzoMano.remove(pos);
 }
 
+/**
+ * Restituisce la dimensione di mazzoMano
+ * @return
+ */
 public int getSizeMazzoMano() {
 	return mazzoMano.size();
 }
 
+/**
+ * Stampa tutte le carte contenute in mazzoMano
+ */
 public void printMazzoMano() {
 	for(int i = 0; i<mazzoMano.size(); i++) {
 		System.out.println(Integer.toString(i)+">>"+mazzoMano.get(i).toString());
@@ -48,6 +70,11 @@ public void printMazzoMano() {
 	}
 }
 
+/**
+ * Permette di aggiungere una carta al mazzoGiocato
+ * Modifica di conseguenza la scoreboard dei simoboli
+ * @param C carta che viene giocata dal giocatore
+ */
 public void setMazzoGiocato(Carta C) {
 	mazzoGiocato.add(C);
 	int simboli[] = C.getSimboliVisibili();
@@ -56,6 +83,13 @@ public void setMazzoGiocato(Carta C) {
 	}
 }
 
+/**
+ * Gioca una carta scelta dal giocatore, aggiorna la scoreboard dei simboli in corrispondenza del risultato, lo stato degli angoli collegati e le coordinate della carta giocata
+ * @param pos_carta_A posizione della carta giocata dall'utente
+ * @param pos_carta_B posizione della carta sulla quale l'utente posiziona la propria
+ * @param angolo_A angolo che si collega dopo la giocata dell'utente
+ * @param angolo_B angolo a cui si collega la carta giocata dall'utente
+ */
 public void GiocaCartaInMano(int pos_carta_A,int pos_carta_B, int angolo_A, int angolo_B) { //rimuove dalla mano la carta in pos e mette nel giocato
 	//aggiungere tra i parametri : angolo della carta da giocare, carta dest, angolo carta dest
 	//controllo di coerenza della posizione finale
@@ -202,23 +236,42 @@ public void GiocaCartaInMano(int pos_carta_A,int pos_carta_B, int angolo_A, int 
 	}
 }
 
+/**
+ * Restituisce una carta dal mazzoGiocato
+ * @param pos posiozne della carta nel mazzoGiocato
+ * @return
+ */
 public Carta getMazzoGiocato(int pos) {
 	return mazzoGiocato.get(pos);
 }
 
+/**
+ * Restituisce l'array list del mazzoGiocato
+ * @return
+ */
 public ArrayList<Carta> getMazzoGiocato() {
 	return mazzoGiocato;
 }
 
+/**
+ * restituisce la dimensione del mazzoGiocato
+ * @return
+ */
 public int getSizeMazzoGiocato() {
 	return mazzoGiocato.size();
 }
 
+/**
+ * Stampa il mazzoGiocato
+ */
 public void printMazzoGiocato() {
 	for(int i = 0; i<mazzoGiocato.size(); i++)
 		System.out.println(Integer.toString(i)+">>"+mazzoGiocato.get(i).toString());
 }
 
+/**
+ * Stampa gli obbiettivi personali di ciascun giocatore in partita
+ */
 public void printObbiettivi() {
 	for(int i = 0; i<obbiettivi.size(); i++) {
 		
@@ -233,6 +286,9 @@ public void printObbiettivi() {
 		
 }
 
+/**
+ * stampa la scoreboard dei simboli di ciascun giocatore in partita
+ */
 public void printScoreboardSimboli() {
 		System.out.println("SIMBOLI SCOPERTI per giocatore di turno: ANIMALI "+scoreboardSimboli[0]+
 						   " FUNGHI "+scoreboardSimboli[1]+
@@ -243,26 +299,49 @@ public void printScoreboardSimboli() {
 						   " PERGAMENE "+scoreboardSimboli[6]);
 }
 
+/**
+ * Restituisce la scoreboard dei simboli
+ * @return
+ */
 public int[] gettabSimboli() {
 	return scoreboardSimboli;
 }
 
+/**
+ * Aggiunge una cartaObbiettivo al giocatore
+ * @param C Carta aggiunta al giocatore
+ */
 public void setObbiettivo(CartaObbiettivo C) {
 	obbiettivi.add(C);
 }
 
-	public String getNome() {
-		return nickname;
-	}	
+/**
+ * ritorna il nickname del giocatore
+ * @return
+ */
+public String getNome() {
+	return nickname;
+}	
 
-	public int getPunti() {
-		return punti;
-	}
+/**
+ * Ritorna i punti personali di ogni giocatore
+ * @return
+ */
+public int getPunti() {
+	return punti;
+}
 
-	public void setPunti(int punti) {
-		this.punti = punti;
-	}
-	
+/**
+ * Setta i punti del giocatore 
+ * @param punti punti assegnati al giocatore
+ */
+public void setPunti(int punti) {
+	this.punti = punti;
+}
+
+/**
+ * Calcola gli obbiettivi del giocatore aggiornando di volta in volta il punteggio singolo del giocatore
+ */
 	public void CalcoloObbiettivo() {
 		int indice1 = 0;
 		int indice2 = 0;

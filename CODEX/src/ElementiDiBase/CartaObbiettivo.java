@@ -3,33 +3,51 @@ package ElementiDiBase;
 import Carte.Simbolo;
 
 public class CartaObbiettivo {
-private final int punti;
-private final Obbiettivo obbiettivo;
-private final Simbolo simbolo;
+	private final int punti;
+	private final Obbiettivo obbiettivo;
+	private final Simbolo simbolo;
 
-public CartaObbiettivo (Simbolo simbolo,Obbiettivo obbiettivo,int punti) {
-	this.punti=punti;
-	this.obbiettivo=obbiettivo;
-	this.simbolo=simbolo;
-}
+	/**
+ 	* Costruttore del metodo CartaObbiettivo
+ 	* @param simbolo    	simbolo presente nella cartaObbiettivo
+ 	* @param obbiettivo   	obbiettivo presente nella cartaObbiettivo
+ 	* @param punti   		quanti punti vale ogni cartaObbiettivo
+ 	*/
+	public CartaObbiettivo (Simbolo simbolo,Obbiettivo obbiettivo,int punti) {
+		this.punti=punti;
+		this.obbiettivo=obbiettivo;
+		this.simbolo=simbolo;
+	}
 
-public int getPunti() {
-	return punti;
-}
+	/**
+	* Restituisce i punti della cartaObbiettivo
+ 	* @return
+ 	*/
+	public int getPunti() {
+		return punti;
+	}
 
-public Obbiettivo getObbiettivo() {
-	return obbiettivo;
-}
+	/**
+	 * Restituisce l'obbiettivo della cartaObbiettivo
+	 * @return
+	 */
+	public Obbiettivo getObbiettivo() {
+		return obbiettivo;
+	}
 
-public Simbolo getSimbolo() {
-	return simbolo;
-}
+	/**
+	 * Restituisce il simbolo della cartaObbiettivo
+	 * @return
+	 */
+	public Simbolo getSimbolo() {
+		return simbolo;
+	}
 
-public String toString() {
-
-return "Carta Obbiettivo "+this.simbolo+","+this.obbiettivo+" punti:"+ this.punti + "||";
-
-}	
-
+	/**
+	 * Stampa la cartaObbiettivo
+	 */
+	public String toString() {
+		return "Carta Obbiettivo "+this.simbolo+","+this.obbiettivo+" punti:"+ this.punti + "||";
+	}	
 }
 

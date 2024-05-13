@@ -38,7 +38,9 @@ public class Codex {
 	private int nPlayer;
 	private String cart = "src/ElementiDiBase/immagini/";
 
-	
+	/**
+	 * Inizializza le carte del gioco
+	 */
 	private void InitCards()
 	{
 		////////////////INIZIALIZZAZIONE CARTE RISORSA//////////////////////////////////////////////////////////////////////////////
@@ -175,6 +177,10 @@ public class Codex {
 	
 					
 	}
+	/**
+	 * gestisce l'input di interi dei giocatori non permettendo input di campi non int 
+	 * @return
+	 */
 	public  int inputIntVerificato() {
 		Scanner sc=new Scanner(System.in);
 		int valoreVerificato=0;
@@ -186,7 +192,9 @@ public class Codex {
 				}
 		return valoreVerificato;
 		}
-	
+	/**
+	 * mostra le carte disponibili da prendere sul tavolo 
+	 */
 	public void MostraCarteSulTavolo() 
 	{
 		System.out.println("///////////////NUOVE CARTE DISPONIBILI (TAVOLO)///////////////////////");
@@ -209,7 +217,9 @@ public class Codex {
 		}		
 		System.out.println("//////////////////////////////////////////////////////////////////////");
 	}
-
+	/**
+	 * Mostra il puntiggio di tutti i giocatori
+	 */
 	public void MostraPunteggio() 
 	{	
 	   System.out.print("PUNTEGGIO : ");	
@@ -220,7 +230,7 @@ public class Codex {
 	}
 	
 
-	
+	/*metodo presente nell'interfaccia Giocataregolare*/
 	public boolean GiocataRegolare(Carta Cmano, Carta Cgiocata,int angolo_in_mano,int angolo_a_tavolo,int simbolBoard[])
 	{
 		boolean risultato = true;
@@ -281,7 +291,10 @@ public class Codex {
 	}
 	
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	   static class mypanel extends JPanel {
+	/**
+	 * permette di definire un frame grafico specifico per il codex con l'immagine  del tavolo
+	 e delle carte a ogni giocata*/
+	    class mypanel extends JPanel {
 		    int x,y;
 		    //Giocatore GG;
 		    ArrayList<Carta> M;
@@ -295,7 +308,9 @@ public class Codex {
 				      System.out.println("Exception while loading image." + e);
 				}	
 		    }
-		    
+		    /*
+		     * permette di selezionare un mazzo a fini di rappresentazione grafica
+		     */
 		    public void setMazzo(ArrayList<Carta> Maz) {
 		    	this.M=Maz;
 		    }
@@ -326,7 +341,10 @@ public class Codex {
            }			        
 	   };	
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-public void play() {
+/**
+ * Inizializza una partita di codex
+ */
+	   public void play() {
 	
 	//Inizializza i mazzi di carte
 	InitCards();
@@ -365,7 +383,7 @@ public void play() {
 		for(int i=0;i<nPlayer;i++) {
 		System.out.println("inserisci il Nome del "+(i+1)+" giocatore "+"\n");	
 		playerName=sc.next();
-		giocatori.add(new Giocatore(i,playerName));
+		giocatori.add(new Giocatore(playerName));
 		}
 				
 		//Iizializza carte in mano ai giocatori
@@ -535,7 +553,11 @@ public void play() {
 	}
 
 	//GR
-	private static JFrame buildFrame() {
+	   /**
+	    * costruisce un frame per la rappresentazione del tavolo da gioco 
+	    * @return
+	    */
+	private  JFrame buildFrame() {
 	    JFrame frame = new JFrame();
 	    frame.setSize(900, 900);
 	    frame.setVisible(false);
