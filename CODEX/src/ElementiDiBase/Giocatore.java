@@ -267,11 +267,11 @@ public void setObbiettivo(CartaObbiettivo C) {
 		int indice1 = 0;
 		int indice2 = 0;
 		int indice3 = 0;
-		int p = 0;
 		int NCarte = mazzoGiocato.size();
 		System.out.println("Valutazione punti obbiettivo giocatore "+getNome());
 		for (int i = 0;i<obbiettivi.size();i++) {
 			int incremento = 0;
+			int p = 0;
 			switch(obbiettivi.get(i).getObbiettivo()) { 
 				case COPPIA:
 					if(scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()]>=2) {
@@ -309,11 +309,9 @@ public void setObbiettivo(CartaObbiettivo C) {
 						else {
 							this.punti+=(NPiume)*obbiettivi.get(i).getPunti();	
 						}
-		}
+					}
 					break;
 					case SCALA_ASCENDENTE:	
-					System.out.println("Valutazione scala scendente");
-					
 					if ((obbiettivi.get(i).getSimbolo() == Simbolo.FUNGO) || (obbiettivi.get(i).getSimbolo() == Simbolo.ANIMALE)) {
 					for (indice1=0;indice1<(NCarte);indice1++) {
 						if ((mazzoGiocato.get(indice1).getSimbolo()== obbiettivi.get(i).getSimbolo()) && (!mazzoGiocato.get(indice1).getClass().getName().contains("Starter")) )  {
@@ -351,11 +349,10 @@ public void setObbiettivo(CartaObbiettivo C) {
 					incremento += p * obbiettivi.get(i).getPunti();
 					punti+= incremento;
 					if (incremento > 0);
+					System.out.println("+ " + incremento + " punti per obbiettivo SCALE ASCENDENTI");
 					}	
 					break;
 				case SCALA_DISCENDENTE:
-					System.out.println("Valutazione scala discendente");
-					
 					if ((obbiettivi.get(i).getSimbolo() == Simbolo.INSETTO) || (obbiettivi.get(i).getSimbolo() == Simbolo.PIANTA)) {
 					for (indice1=0;indice1<(NCarte);indice1++) {	
 						if ((mazzoGiocato.get(indice1).getSimbolo()== obbiettivi.get(i).getSimbolo()) && (!mazzoGiocato.get(indice1).getClass().getName().contains("Starter")) ) {
@@ -396,11 +393,7 @@ public void setObbiettivo(CartaObbiettivo C) {
 						System.out.println("+ " + incremento + " punti per obbiettivo SCALE DISCENDENTI");	
 					}
 					break;
-				case L:
-					System.out.println("Selettore L");
-					
-					System.out.println("Valutazione L");
-					
+				case L:	
 					for (indice1=0;indice1<(NCarte);indice1++) {
 						
 						if ((mazzoGiocato.get(indice1).getSimbolo()==Simbolo.FUNGO) && (!mazzoGiocato.get(indice1).getClass().getName().contains("Starter")) ) {
@@ -437,14 +430,11 @@ public void setObbiettivo(CartaObbiettivo C) {
 					 }
 					incremento += (p * obbiettivi.get(i).getPunti());
 					this.punti+= incremento;
-					if (incremento > 0)					
+					if (incremento > 0)	
+						System.out.println("+ " + incremento + " punti per obbiettivo L");
 					break;
 				case L_ROVESCIO:
-					System.out.println("Selettore L rovecio");
-					System.out.println("Valutazione L rovescio");
-					
 					for (indice1=0;indice1<(NCarte);indice1++) {
-						
 						if ((mazzoGiocato.get(indice1).getSimbolo()==Simbolo.PIANTA) && (!mazzoGiocato.get(indice1).getClass().getName().contains("Starter")) )  {
 							
 							    int X1 = mazzoGiocato.get(indice1).getXrel();
@@ -479,7 +469,8 @@ public void setObbiettivo(CartaObbiettivo C) {
 					 }
 					incremento += (p* obbiettivi.get(i).getPunti());
 					this.punti+= incremento;
-					if (incremento > 0)					
+					if (incremento > 0)	
+					System.out.println("+ " + incremento + " punti per obbiettivo L ROVESCIO");
 					break;
 				case SETTE:
 					System.out.println("Selettore sette");
