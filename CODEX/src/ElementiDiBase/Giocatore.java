@@ -4,7 +4,7 @@ import Carte.*;
 
 import java. util. ArrayList;
 
-public class Giocatore implements GiocataRegolare {
+public class Giocatore implements GiocataCartaInMano {
 private String nickname;
 private ArrayList<Carta> mazzoMano;		//List
 private ArrayList<Carta> mazzoGiocato;		//List
@@ -83,13 +83,7 @@ public void setMazzoGiocato(Carta C) {
 	}
 }
 
-/**
- * Gioca una carta scelta dal giocatore, aggiorna la scoreboard dei simboli in corrispondenza del risultato, lo stato degli angoli collegati e le coordinate della carta giocata
- * @param pos_carta_A posizione della carta giocata dall'utente
- * @param pos_carta_B posizione della carta sulla quale l'utente posiziona la propria
- * @param angolo_A angolo che si collega dopo la giocata dell'utente
- * @param angolo_B angolo a cui si collega la carta giocata dall'utente
- */
+/*metodo presente nell'interfaccia GiocataCartaInMano*/
 public void GiocaCartaInMano(int pos_carta_A,int pos_carta_B, int angolo_A, int angolo_B) { //rimuove dalla mano la carta in pos e mette nel giocato
 	//aggiungere tra i parametri : angolo della carta da giocare, carta dest, angolo carta dest
 	//controllo di coerenza della posizione finale

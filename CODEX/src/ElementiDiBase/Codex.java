@@ -181,7 +181,7 @@ public class Codex {
 	 * gestisce l'input di interi dei giocatori non permettendo input di campi non int 
 	 * @return
 	 */
-	public  int inputIntVerificato() {
+	public  int InputIntVerificato() {
 		Scanner sc=new Scanner(System.in);
 		int valoreVerificato=0;
 			try {
@@ -229,8 +229,17 @@ public class Codex {
 	   System.out.println(" ");
 	}
 	
-
-	/*metodo presente nell'interfaccia Giocataregolare*/
+	/**
+	 * Gestisce il posizinamento delle carte regolando:l'angolo a cui va conessa la carta a seconda del angolo
+	 * scelto dal giocatore,e se la carta è oro controlla che il giocatore abbia i requisiti di simboli per 
+	 * piazzarla. Il metodo viene implementato nella classe Codex
+	 * @param Cmano carta da piazzare 
+	 * @param Cgiocata carta sul tavolo 
+	 * @param angolo_in_mano angolo della carta da giocare 
+	 * @param angolo_a_tavolo angolo della carta sul tavolo
+	 * @param simbolBoard 	scoreboard dei simboli del giocatore 
+	 * @return
+	 */
 	public boolean GiocataRegolare(Carta Cmano, Carta Cgiocata,int angolo_in_mano,int angolo_a_tavolo,int simbolBoard[])
 	{
 		boolean risultato = true;
@@ -294,13 +303,13 @@ public class Codex {
 	/**
 	 * permette di definire un frame grafico specifico per il codex con l'immagine  del tavolo
 	 e delle carte a ogni giocata*/
-	    class mypanel extends JPanel {
+	    class MyPanel extends JPanel {
 		    int x,y;
 		    //Giocatore GG;
 		    ArrayList<Carta> M;
 		    BufferedImage background;
 		    
-		    public mypanel() {
+		    public MyPanel() {
 		      super();
 			    try {
 			      	background = ImageIO.read(new File("src/ElementiDiBase/immagini/Tablebackground3.jpg"));
@@ -350,7 +359,7 @@ public class Codex {
 	InitCards();
 	
 	JFrame frame = buildFrame();//GR
-	mypanel panel = new mypanel();
+	MyPanel panel = new MyPanel();
     JScrollPane scroller = new JScrollPane(panel); //NEW
     scroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);//NEW
     scroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);//NEW
@@ -372,7 +381,7 @@ public class Codex {
 		do {
 			System.out.println("inserisci il numero di giocatori (da 2 a 4)"+"\n");
 		
-			nPlayer= inputIntVerificato();
+			nPlayer= InputIntVerificato();
 		
 				 
 			System.out.println(nPlayer);
@@ -429,7 +438,7 @@ public class Codex {
 			   System.out.println("9-Termina partita");
 			   System.out.println("***************************************************************************");
 			   
-			   input = inputIntVerificato();
+			   input = InputIntVerificato();
 			   /////Queste due linee qui' sotto servono per provare a ripulire lo schermo////
 			   //System.out.print("\033[H\033[2J");
 			   //System.out.flush();
@@ -442,7 +451,7 @@ public class Codex {
 	           case 2:
 	        	   do {
 	        		   System.out.println("Seleziona la posizione della carta in mano da girare (0.."+(giocatori.get(giocatore_di_turno).getSizeMazzoMano()-1));
-	        		   input2 = inputIntVerificato();
+	        		   input2 = InputIntVerificato();
 	               } while((input2<0) && (input2>=giocatori.get(giocatore_di_turno).getSizeMazzoMano())||input2==-1);
 	        		   giocatori.get(giocatore_di_turno).getMazzoMano(input2).flip(); 	   
 	        	   break;
@@ -462,18 +471,18 @@ public class Codex {
 	        	   do {
 		        	   do {
 		        	     System.out.println("inserire l'indice della carta in mano da giocare (da 0 a " + (size_mazzo_mano-1) + ")");
-		        	     indice_carta_da_giocare = inputIntVerificato();
+		        	     indice_carta_da_giocare = InputIntVerificato();
 		        	   } while((indice_carta_da_giocare<0) || (indice_carta_da_giocare >= size_mazzo_mano) );
 		        	   
 		        	   do {
 			        	     System.out.println("inserire l'indice dell'angolo delle precedente carta : 1)Angolo Nord-Ovest;2)Sud-Ovest;3)Nord-Est;4)Sud-Est");
-			        	     indice_angolo_da_giocare = inputIntVerificato();
+			        	     indice_angolo_da_giocare = InputIntVerificato();
 			        	} while((indice_angolo_da_giocare<1) || (indice_angolo_da_giocare > 4) );
 		        	   
 		        	   ///
 		        	   do {
 			        	     System.out.println("inserire l'indice della carta su cui giocare a tavolo (da 0 a " + (size_mazzo_giocato-1) + ")");
-			        	     indice_carta_giocata = inputIntVerificato();
+			        	     indice_carta_giocata = InputIntVerificato();
 			        	   } while((indice_carta_giocata<0) || (indice_carta_giocata >= size_mazzo_giocato) );
 			        	   
 		        	   Angolo g=new Angolo(Simbolo.VUOTO);
@@ -494,11 +503,11 @@ public class Codex {
 	           case 6:
 	        	   do {
 	        		   System.out.println("Seleziona : 1 per prelevare carta risorsa, altro per carta oro");
-	        		   input2 = inputIntVerificato();
+	        		   input2 = InputIntVerificato();
 	        	   }while(input2==-1);
 	        	   do {
 	        		   System.out.println("Seleziona la posizione della carta 0,1,2 ");
-	        		   input3 = inputIntVerificato();
+	        		   input3 = InputIntVerificato();
 	        	   } while ((input3<0) && (input3>2)||input3==-1);
 	        	   if (input3 !=0)
 	        		   input3 = 1;
