@@ -344,7 +344,7 @@ public class Codex {
 /**
  * Inizializza una partita di codex
  */
-	   public void play() {
+	   public void Play() {
 	
 	//Inizializza i mazzi di carte
 	InitCards();
