@@ -303,7 +303,7 @@ public class Codex {
 	    if ((risultato == true) && (Cmano.getClass().getName().contains("Oro")) && Cmano.isFronte()) {
     		risultato = (Cmano.requisiti(0) <= simbolBoard[0] && (Cmano.requisiti(1) <= simbolBoard[1] && (Cmano.requisiti(2) <= simbolBoard[2] && (Cmano.requisiti(3) <= simbolBoard[3]))));
     		if (!risultato)
-    			System.out.println("Risorse non sufficienti per abilitare la giocabilita'  della carta oro");	   
+    			System.out.println("Risorse non sufficienti per abilitare la giocabilita' della carta oro");	   
    
 	    }
 			
@@ -522,7 +522,7 @@ public class Codex {
 		        	   prelievo_sbloccato = true;
 		        	   tiro_sbloccato = false;
 		        	   } else {
-		        		   System.out.println("O il mazzo in mano   vuoto oppure   composto da sole carte oro lato fronte vincolate da mancanza di risorse");
+		        		   System.out.println("O il mazzo in mano e' vuoto oppure e' composto da sole carte oro lato fronte vincolate da mancanza di risorse");
 		        		   System.out.println("Verificare l'esistenza di carte nella mano (opzione 1) e giocare carte oro su faccia retro (tramite flip-opzione 2) se vincolate");
 		        	   }
 	        	   } else
@@ -577,8 +577,9 @@ public class Codex {
 	        		   System.out.println("Per poter passare al concorrente successivo bisogna aver prima prelevato una nuova carta (opzione 6)");	        	   
 	        	   break;
 	           default:
+	        	   System.out.println("gioco terminato");
 	           }
-		    } while(((input>=0) && (input<8)|| input==-1 || (tiro_sbloccato == true) || (prelievo_sbloccato == true)) );
+		    } while(((input>0) && (input<=8) || input==-1 && ((tiro_sbloccato == true) || (prelievo_sbloccato == true))));
 		   
 		   turno++;
 		   giocatore_di_turno = turno%nPlayer;

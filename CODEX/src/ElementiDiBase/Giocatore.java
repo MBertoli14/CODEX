@@ -667,7 +667,8 @@ public int getNumObbiettiviRaggiunti() {
 		  C = mazzoMano.get(i);
 		  
 		  if ((C.getClass().getName().contains("Risorsa")) || 
-			  ((C.getClass().getName().contains("Oro")) && (C.requisiti(0) <= scoreboardSimboli[0]) && (C.requisiti(1) <= scoreboardSimboli[1]) && (C.requisiti(2) <= scoreboardSimboli[2]) && (C.requisiti(3) <= scoreboardSimboli[3]))) {
+			  ((C.getClass().getName().contains("Oro")) && (C.requisiti(0) <= scoreboardSimboli[0]) && (C.requisiti(1) <= scoreboardSimboli[1]) && (C.requisiti(2) <= scoreboardSimboli[2]) && (C.requisiti(3) <= scoreboardSimboli[3])) ||
+			  (C.getClass().getName().contains("Oro") && C.isFronte()==false)) {
 			  blocco = false;
 			  break;
 		  }  
