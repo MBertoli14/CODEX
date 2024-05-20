@@ -10,6 +10,7 @@ private ArrayList<Carta> mazzoMano;		//List
 private ArrayList<Carta> mazzoGiocato;		//List
 private ArrayList<CartaObbiettivo> obbiettivi;
 protected int punti;
+protected int NumObbiettiviRaggiunti;
 private int scoreboardSimboli[];
 /**
  * Costruttore del giocatore
@@ -18,6 +19,7 @@ private int scoreboardSimboli[];
 public Giocatore(String Nick) {
 	this.nickname=Nick;
 	this.punti = 0;
+	this.NumObbiettiviRaggiunti = 0;
 	this.mazzoMano = new ArrayList<Carta>();		//List
 	this.mazzoGiocato = new ArrayList<Carta>();		//List
 	this.obbiettivi = new ArrayList<CartaObbiettivo>();
@@ -332,6 +334,12 @@ public int getPunti() {
 public void setPunti(int punti) {
 	this.punti = punti;
 }
+/**
+ * Resitiuisce il numero di obbiettivi che il giocatore ha raggiunto durante il corso della pratita 
+ */
+public int getNumObbiettiviRaggiunti() {
+	return NumObbiettiviRaggiunti;
+}
 
 /**
  * Calcola gli obbiettivi del giocatore aggiornando di volta in volta il punteggio singolo del giocatore
@@ -347,29 +355,30 @@ public void setPunti(int punti) {
 			int p = 0;
 			switch(obbiettivi.get(i).getObbiettivo()) { 
 				case COPPIA:
+					System.out.println("Valutazione coppia");
 					if(scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()]>=2) {
-						if(scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()]%2!=0) {
-							int sottrazione =scoreboardSimboli[obbiettivi.get(0).getSimbolo().ordinal()]%2;
-							scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()]-=sottrazione;
-						}
-						this.punti+=(scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()]/2)*obbiettivi.get(i).getPunti();
+						p=(scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()]/2)*obbiettivi.get(i).getPunti();
+						System.out.println("OK, punti coppie ="+p);
+						this.punti+=p;
+						this.NumObbiettiviRaggiunti++;
 					}
 					break;
 				case TRIO:
+					System.out.println("Valutazione trio");
 					if(scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()]>=3) {
-						if(scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()]%3!=0) {
-							int sottrazione =scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()]%3;
-							scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()]-=sottrazione;
-						}
-						this.punti+=(scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()]/3)*obbiettivi.get(i).getPunti();
+						p=(scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()]/3)*obbiettivi.get(i).getPunti();
+						System.out.println("OK, punti trio ="+p);
+						this.punti+=p;
+						this.NumObbiettiviRaggiunti++;
 					}
 					break;
 				case TRIO_UNICO:
+					System.out.println("Valutazione trio unico");
 					int NPiume=scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()];
 					int NBoccette=scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()+1];
 					int NPergamene=scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()+2];
-					if(NPiume>=1&&NBoccette>=1&&NPergamene>=1) {
-						if(NPiume!=NBoccette&& NBoccette!= NPergamene&& NPergamene!= NPiume ) {
+					if((NPiume>=1) && (NBoccette>=1) && (NPergamene>=1)) {
+						if((NPiume!=NBoccette) && (NBoccette!= NPergamene) && (NPergamene!= NPiume)) {
 							int arr[] ={NPiume,NBoccette,NPergamene};
 							int min=NPiume;
 							for(int c=0;c<3;c++) {
@@ -377,14 +386,19 @@ public void setPunti(int punti) {
 									min=arr[c];
 								}
 							}
-							this.punti+=min*obbiettivi.get(i).getPunti();
+							p=min*obbiettivi.get(i).getPunti();
+							System.out.println("OK, punti trio unico ="+p);
+							this.punti+=p;
 						}
 						else {
 							this.punti+=(NPiume)*obbiettivi.get(i).getPunti();	
 						}
+						this.NumObbiettiviRaggiunti++;
 					}
 					break;
 					case SCALA_ASCENDENTE:	
+					System.out.println("Valutazione scala ascendente");
+					
 					if ((obbiettivi.get(i).getSimbolo() == Simbolo.FUNGO) || (obbiettivi.get(i).getSimbolo() == Simbolo.ANIMALE)) {
 					for (indice1=0;indice1<(NCarte);indice1++) {
 						if ((mazzoGiocato.get(indice1).getSimbolo()== obbiettivi.get(i).getSimbolo()) && (!mazzoGiocato.get(indice1).getClass().getName().contains("Starter")) )  {
@@ -411,8 +425,9 @@ public void setPunti(int punti) {
 											
 											if ((mazzoGiocato.get(indice3).getSimbolo()== obbiettivi.get(i).getSimbolo())&& (!mazzoGiocato.get(indice3).getClass().getName().contains("Starter")) &&
 											        (indice3!=indice2)&& (X3==X2+1)&& (Y3==Y2+1)) {
-											    p++; //Target raggiunto, incrementa punti
+											    p++; 
 											    System.out.println("terzo livello OK, numero di scale ascendenti "+p);
+											    this.NumObbiettiviRaggiunti++;
 										     }
 								        }
 								    }
@@ -421,11 +436,13 @@ public void setPunti(int punti) {
 					 }
 					incremento += p * obbiettivi.get(i).getPunti();
 					punti+= incremento;
-					if (incremento > 0);
-					System.out.println("+ " + incremento + " punti per obbiettivo SCALE ASCENDENTI");
+					if (incremento > 0) 
+						System.out.println("+ " + incremento + " punti per obbiettivo SCALE ASCENDENTI");
 					}	
 					break;
 				case SCALA_DISCENDENTE:
+					System.out.println("Valutazione scala discendente");
+					
 					if ((obbiettivi.get(i).getSimbolo() == Simbolo.INSETTO) || (obbiettivi.get(i).getSimbolo() == Simbolo.PIANTA)) {
 					for (indice1=0;indice1<(NCarte);indice1++) {	
 						if ((mazzoGiocato.get(indice1).getSimbolo()== obbiettivi.get(i).getSimbolo()) && (!mazzoGiocato.get(indice1).getClass().getName().contains("Starter")) ) {
@@ -433,7 +450,6 @@ public void setPunti(int punti) {
 							    int X1 = mazzoGiocato.get(indice1).getXrel();
 							    int Y1 = mazzoGiocato.get(indice1).getYrel();
 							    
-							    System.out.println("primo livello OK");
 							
 								for (indice2=0;indice2<(NCarte);indice2++) {
 									
@@ -443,7 +459,6 @@ public void setPunti(int punti) {
 									if ((mazzoGiocato.get(indice2).getSimbolo()== obbiettivi.get(i).getSimbolo())&& (!mazzoGiocato.get(indice2).getClass().getName().contains("Starter")) &&
 								        (indice2!=indice1)&& (X2==X1+1)&& (Y2==Y1-1)) {
 										
-										System.out.println("secondo livello OK");
 										
 										for (indice3=0;indice3<(NCarte);indice3++) {
 											
@@ -452,8 +467,9 @@ public void setPunti(int punti) {
 											
 											if ((mazzoGiocato.get(indice3).getSimbolo()== obbiettivi.get(i).getSimbolo())&& (!mazzoGiocato.get(indice3).getClass().getName().contains("Starter")) &&
 											        (indice3!=indice2)&& (X3==X2+1)&& (Y3==Y2-1)) {
-											    p++; //Target raggiunto, incrementa punti
+											    p++; 
 											    System.out.println("terzo livello OK, numero di scale discendenti "+p);
+											    this.NumObbiettiviRaggiunti++;
 										     }
 								        }
 								    }
@@ -467,6 +483,8 @@ public void setPunti(int punti) {
 					}
 					break;
 				case L:	
+					System.out.println("Valutazione L");
+					
 					for (indice1=0;indice1<(NCarte);indice1++) {
 						
 						if ((mazzoGiocato.get(indice1).getSimbolo()==Simbolo.FUNGO) && (!mazzoGiocato.get(indice1).getClass().getName().contains("Starter")) ) {
@@ -474,7 +492,6 @@ public void setPunti(int punti) {
 							    int X1 = mazzoGiocato.get(indice1).getXrel();
 							    int Y1 = mazzoGiocato.get(indice1).getYrel();
 							    
-							    System.out.println("primo livello OK");
 							
 								for (indice2=0;indice2<(NCarte);indice2++) {
 									
@@ -484,7 +501,6 @@ public void setPunti(int punti) {
 									if ((mazzoGiocato.get(indice2).getSimbolo()==Simbolo.FUNGO)&& (!mazzoGiocato.get(indice2).getClass().getName().contains("Starter")) &&
 								        (indice2!=indice1)&& (X2==X1)&& (Y2==Y1-2)) {
 										
-										System.out.println("secondo livello OK");
 										
 										for (indice3=0;indice3<(NCarte);indice3++) {
 											
@@ -493,8 +509,9 @@ public void setPunti(int punti) {
 											
 											if ((mazzoGiocato.get(indice3).getSimbolo()==Simbolo.PIANTA)&& (!mazzoGiocato.get(indice3).getClass().getName().contains("Starter")) &&
 											        (indice3!=indice2)&& (X3==X2+1)&& (Y3==Y2-1)) {
-											    p++; //Target raggiunto, incrementa punti
+											    p++; 
 											    System.out.println("terzo livello OK, numero di L "+p);
+											    this.NumObbiettiviRaggiunti++;
 										     }
 								        }
 								    }
@@ -507,13 +524,14 @@ public void setPunti(int punti) {
 						System.out.println("+ " + incremento + " punti per obbiettivo L");
 					break;
 				case L_ROVESCIO:
+					System.out.println("Valutazione L rovescio");
+					
 					for (indice1=0;indice1<(NCarte);indice1++) {
 						if ((mazzoGiocato.get(indice1).getSimbolo()==Simbolo.PIANTA) && (!mazzoGiocato.get(indice1).getClass().getName().contains("Starter")) )  {
 							
 							    int X1 = mazzoGiocato.get(indice1).getXrel();
 							    int Y1 = mazzoGiocato.get(indice1).getYrel();
 							    
-							    System.out.println("primo livello OK");
 							
 								for (indice2=0;indice2<(NCarte);indice2++) {
 									
@@ -523,7 +541,6 @@ public void setPunti(int punti) {
 									if ((mazzoGiocato.get(indice2).getSimbolo()==Simbolo.PIANTA)&& (!mazzoGiocato.get(indice2).getClass().getName().contains("Starter")) &&
 								        (indice2!=indice1)&& (X2==X1)&& (Y2==Y1-2)) {
 										
-										System.out.println("secondo livello OK");
 										
 										for (indice3=0;indice3<(NCarte);indice3++) {
 											
@@ -532,8 +549,9 @@ public void setPunti(int punti) {
 											
 											if ((mazzoGiocato.get(indice3).getSimbolo()==Simbolo.INSETTO)&& (!mazzoGiocato.get(indice3).getClass().getName().contains("Starter")) &&
 											        (indice3!=indice2)&& (X3==X2-1)&& (Y3==Y2-1)) {
-											    p++; //Target raggiunto, incrementa punti
+											    p++; 
 											    System.out.println("terzo livello OK, numero di L rovesci "+p);
+											    this.NumObbiettiviRaggiunti++;
 										     }
 								        }
 								    }
@@ -542,8 +560,8 @@ public void setPunti(int punti) {
 					 }
 					incremento += (p* obbiettivi.get(i).getPunti());
 					this.punti+= incremento;
-					if (incremento > 0)	
-					System.out.println("+ " + incremento + " punti per obbiettivo L ROVESCIO");
+					if (incremento > 0)
+						System.out.println("+ " + incremento + " punti per obbiettivo L ROVESCIO");
 					break;
 				case SETTE:
 					System.out.println("Selettore sette");
@@ -554,7 +572,6 @@ public void setPunti(int punti) {
 							    int X1 = mazzoGiocato.get(indice1).getXrel();
 							    int Y1 = mazzoGiocato.get(indice1).getYrel();
 							    
-							    System.out.println("primo livello OK");
 							
 								for (indice2=0;indice2<(NCarte);indice2++) {
 									
@@ -564,7 +581,6 @@ public void setPunti(int punti) {
 									if ((mazzoGiocato.get(indice2).getSimbolo()==Simbolo.INSETTO)&& (!mazzoGiocato.get(indice2).getClass().getName().contains("Starter")) &&
 								        (indice2!=indice1)&& (X2==X1)&& (Y2==Y1+2)) {
 										
-										System.out.println("Secondo livello OK");
 										
 										for (indice3=0;indice3<(NCarte);indice3++) {
 											
@@ -574,9 +590,10 @@ public void setPunti(int punti) {
 											if ((mazzoGiocato.get(indice3).getSimbolo()==Simbolo.ANIMALE)&& (!mazzoGiocato.get(indice3).getClass().getName().contains("Starter")) &&
 											        (indice3!=indice2)&& (X3==X2-1)&& (Y3==Y2+1)) {
 												
-											    p++; //Target raggiunto, incrementa punti
+											    p++; 
 											    
 											    System.out.println("terzo livello OK, numero di sette "+p);
+											    this.NumObbiettiviRaggiunti++;
 										     }
 								        }
 								    }
@@ -584,9 +601,10 @@ public void setPunti(int punti) {
 					     }
 					 }
 					
-					incremento += (p* obbiettivi.get(i).getPunti()); //puntiSette e gli altri dovrebbero essere private ?
+					incremento += (p* obbiettivi.get(i).getPunti()); 
 					this.punti+= incremento;
-					if (incremento > 0)					
+					if (incremento > 0)
+						System.out.println("+ " + incremento + " punti per obbiettivo SETTE");
 					break;
 				case SETTE_ROVESCIO:
 					System.out.println("Selettore sette rovescio");
@@ -597,7 +615,6 @@ public void setPunti(int punti) {
 							    int X1 = mazzoGiocato.get(indice1).getXrel();
 							    int Y1 = mazzoGiocato.get(indice1).getYrel();
 							    
-							    System.out.println("primo livello OK");
 							
 								for (indice2=0;indice2<(NCarte);indice2++) {
 									
@@ -607,7 +624,6 @@ public void setPunti(int punti) {
 									if ((mazzoGiocato.get(indice2).getSimbolo()==Simbolo.ANIMALE)&& (!mazzoGiocato.get(indice2).getClass().getName().contains("Starter")) &&
 								        (indice2!=indice1)&& (X2==X1)&& (Y2==Y1+2)) {
 										
-										System.out.println("secondo livello OK");
 										
 										for (indice3=0;indice3<(NCarte);indice3++) {
 											
@@ -618,6 +634,7 @@ public void setPunti(int punti) {
 											        (indice3!=indice2)&& (X3==X2+1)&& (Y3==Y2+1)) {
 											    p++; //Target raggiunto, incrementa punti
 											    System.out.println("terzo livello OK, numero di sette rovesci "+p);
+											    this.NumObbiettiviRaggiunti++;
 										     }
 								        }
 								    }
@@ -637,4 +654,26 @@ public void setPunti(int punti) {
 		
 
 	}
+	/**
+	 * controlla che la carta generica possa essere usata; nel caso della carta oro verifica che le risorse correnti siano sufficenti
+	 * se cio e vero restutiisce true 
+	 */
+	public boolean bloccoCarteOro() {
+		boolean blocco = true;
+		int i;
+		Carta C;
+		
+		for (i = 0;i<mazzoMano.size();i++) {
+		  C = mazzoMano.get(i);
+		  
+		  if ((C.getClass().getName().contains("Risorsa")) || 
+			  ((C.getClass().getName().contains("Oro")) && (C.requisiti(0) <= scoreboardSimboli[0]) && (C.requisiti(1) <= scoreboardSimboli[1]) && (C.requisiti(2) <= scoreboardSimboli[2]) && (C.requisiti(3) <= scoreboardSimboli[3]))) {
+			  blocco = false;
+			  break;
+		  }  
+		} 
+		
+		return blocco;
+	}
+	
 }
