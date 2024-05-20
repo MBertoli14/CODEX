@@ -380,9 +380,6 @@ public class Codex {
 			System.out.println("inserisci il numero di giocatori (da 2 a 4)"+"\n");
 		
 			nPlayer= InputIntVerificato();
-		
-				 
-			System.out.println(nPlayer);
 			if(nPlayer<2 || nPlayer>4||nPlayer==-1) {
 			System.out.println("Hai inserito un numero di giocatori diverso da quello consentito"+"\n");
 			}

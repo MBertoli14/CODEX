@@ -349,6 +349,7 @@ public int getNumObbiettiviRaggiunti() {
 		int indice2 = 0;
 		int indice3 = 0;
 		int NCarte = mazzoGiocato.size();
+		System.out.println("------------------------------------");
 		System.out.println("Valutazione punti obbiettivo giocatore "+getNome());
 		for (int i = 0;i<obbiettivi.size();i++) {
 			int incremento = 0;
