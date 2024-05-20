@@ -615,7 +615,7 @@ public class Codex {
 			}
 						
 			
-				System.out.println("Il vincitore   "+giocatori.get(vincitore).getPunti()+"! "+" obbiettivi raggiunti: "+giocatori.get(vincitore).getNumObbiettiviRaggiunti());
+				System.out.println("Il vincitore "+giocatori.get(vincitore).getNome() +" con "+giocatori.get(vincitore).getPunti()+" punti! "+" obbiettivi raggiunti: "+giocatori.get(vincitore).getNumObbiettiviRaggiunti());
 			System.out.println("/////////////////RIEPILOGO//////////////////");
 			for(int i=0;i<nPlayer;i++) {
 				System.out.println(giocatori.get(i).getNome()+" | Punti : "+giocatori.get(i).getPunti()+" | Obbiettivi raggiunti : "+giocatori.get(i).getNumObbiettiviRaggiunti());
