@@ -577,9 +577,8 @@ public class Codex {
 	        		   System.out.println("Per poter passare al concorrente successivo bisogna aver prima prelevato una nuova carta (opzione 6)");	        	   
 	        	   break;
 	           default:
-	        	   System.out.println("gioco terminato");
 	           }
-		    } while(((input>0) && (input<=8) || input==-1 && ((tiro_sbloccato == true) || (prelievo_sbloccato == true))));
+		    } while(((input>0) && (input<8) || input==-1 && ((tiro_sbloccato == true) || (prelievo_sbloccato == true))));
 		   
 		   turno++;
 		   giocatore_di_turno = turno%nPlayer;
