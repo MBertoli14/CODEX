@@ -7,7 +7,7 @@ import javax.imageio.ImageIO;
 
 public class Carta {
 	protected Simbolo simbolo;
-	public Angolo angoli[]; //per accesso classe derivata o usare metodo ?
+	protected Angolo angoli[]; //per accesso classe derivata o usare metodo ?
 	protected Simbolo simboli_fronte[];
 	protected int nSimboli_esposti[];
 	protected boolean fronte;

@@ -291,12 +291,12 @@ public class Codex {
 			
 		}
 		
-		if ((risultato == true) && (Cgiocata.angoli[angolo_a_tavolo - 1].getSimbolo() == Simbolo.NO_ANGOLO)) {
+		if ((risultato == true) && (Cgiocata.getAngolo(angolo_a_tavolo - 1).getSimbolo() == Simbolo.NO_ANGOLO)) {
 			risultato = false;
 		}
 		
 		//Se nessun fallimento e' avvenuto sopra verifica se l'angolo della carta a tavolo e' gia' connesso
-		if ((risultato == true) && (Cgiocata.angoli[angolo_a_tavolo - 1].getConnessione() != false)) {
+		if ((risultato == true) && (Cgiocata.getAngolo(angolo_a_tavolo - 1).getConnessione() != false)) {
 			risultato = false;
 			System.out.println("L'angolo " + Integer.toString(angolo_a_tavolo) +  "della carta a tavolo scelta e' gia connesso");
 		}
@@ -575,7 +575,7 @@ public class Codex {
 	        	   break;
 	           default:
 	           }
-		    } while(((input>0) && (input<8) || input==-1 && ((tiro_sbloccato == true) || (prelievo_sbloccato == true))));
+		    } while(((input>0) && (input<=8) || input==-1 && ((tiro_sbloccato == true) || (prelievo_sbloccato == true))));
 		   
 		   turno++;
 		   giocatore_di_turno = turno%nPlayer;

@@ -102,7 +102,7 @@ public void GiocaCartaInMano(int pos_carta_A,int pos_carta_B, int angolo_A, int 
 	int quarto_angolo_coperto = 0;
 	
 	Carta C = mazzoMano.remove(pos_carta_A);
-	C.angoli[angolo_A - 1].setConnessione(true); 
+	C.getAngolo(angolo_A - 1).setConnessione(true); 
 	C.setXrel(mazzoGiocato.get(pos_carta_B).getXrel());
 	C.setYrel(mazzoGiocato.get(pos_carta_B).getYrel());
 	switch(angolo_A) {
@@ -173,9 +173,9 @@ public void GiocaCartaInMano(int pos_carta_A,int pos_carta_B, int angolo_A, int 
 		default:
 	}
 	mazzoGiocato.add(C);
-	mazzoGiocato.get(pos_carta_B).angoli[angolo_B - 1].setConnessione(true);;
-	mazzoGiocato.get(pos_carta_B).angoli[angolo_B - 1].setVisibilita(false);
-	int idx = mazzoGiocato.get(pos_carta_B).angoli[angolo_B - 1].getSimbolo().ordinal();
+	mazzoGiocato.get(pos_carta_B).getAngolo(angolo_B - 1).setConnessione(true);
+	mazzoGiocato.get(pos_carta_B).getAngolo(angolo_B - 1).setConnessione(false);
+	int idx = mazzoGiocato.get(pos_carta_B).getAngolo(angolo_B - 1).getSimbolo().ordinal();
 	if (idx < 7)
 		scoreboardSimboli[idx]-=1;
 	
@@ -196,9 +196,9 @@ public void GiocaCartaInMano(int pos_carta_A,int pos_carta_B, int angolo_A, int 
 		}
 		
 		if (angolo_coperto != 0) {
-			mazzoGiocato.get(k).angoli[angolo_coperto - 1].setConnessione(true);
-			mazzoGiocato.get(k).angoli[angolo_coperto - 1].setVisibilita(false);
-				idx = mazzoGiocato.get(k).angoli[angolo_coperto - 1].getSimbolo().ordinal();
+			mazzoGiocato.get(k).getAngolo(angolo_coperto - 1).setConnessione(true);
+			mazzoGiocato.get(k).getAngolo(angolo_coperto - 1).setVisibilita(false);
+				idx = mazzoGiocato.get(k).getAngolo(angolo_coperto - 1).getSimbolo().ordinal();
 				if (idx < 7)
 					scoreboardSimboli[idx]-=1;
 			angolo_coperto = 0;
