@@ -575,7 +575,7 @@ public class Codex {
 	        	   break;
 	           default:
 	           }
-		    } while(((input>0) && (input<8) || input==-1) && ((tiro_sbloccato == true) || (prelievo_sbloccato == true)));
+		    } while(((input>0) && (input<9) || input==-1) || ((tiro_sbloccato == true) || (prelievo_sbloccato == true)));
 		   
 		   turno++;
 		   giocatore_di_turno = turno%nPlayer;
