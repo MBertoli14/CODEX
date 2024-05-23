@@ -8,5 +8,5 @@ public interface GiocataCartaInMano {
 	 * @param angolo_A angolo che si collega dopo la giocata dell'utente
 	 * @param angolo_B angolo a cui si collega la carta giocata dall'utente
 	 */
-	public default void GiocaCartaInMano(int pos_carta_A,int pos_carta_B, int angolo_A, int angolo_B) {}
+	public void GiocaCartaInMano(int pos_carta_A,int pos_carta_B, int angolo_A, int angolo_B);
 }
