@@ -211,24 +211,23 @@ public void GiocaCartaInMano(int pos_carta_A,int pos_carta_B, int angolo_A, int 
 	
 	if ((C.getClass().getName().contains("Oro"))) {
 				
-			int p = C.getPunti();
-			int punteggio = p & 0x0F;
-			int moltiplicatore = (p>>4) & 0x0F;
-			int indice_moltiplicatore = 4 + moltiplicatore;
-			if (indice_moltiplicatore < 7)  {
-				punti += (punteggio * scoreboardSimboli[indice_moltiplicatore]);
-			    System.out.println("+"+(punteggio * scoreboardSimboli[indice_moltiplicatore])+" punti per "+this.getNome());// messaggio di test
-			} else if (indice_moltiplicatore == 7)  {
-				punti += (punteggio * angoli_connessi_in_giocata);
-				System.out.println("+"+(punteggio * angoli_connessi_in_giocata)+" punti per "+this.getNome());
-			} else   {
-				punti += punteggio;
-				System.out.println("+"+punteggio+" punti per "+this.getNome());
-			}	
+		int punteggio = ((Carta_Oro)C).getPunti();  //downcast da Carta a Carta oro
+		Moltiplicatore moltOro=((Carta_Oro)C).getMoltiplicatore(); //downcast da Carta a Carta oro
+		if (moltOro!=Moltiplicatore.ANGOLO&&moltOro!=Moltiplicatore.NESSUNO)  {
+			int indice_moltiplicatore=(moltOro.ordinal())+4;
+			punti += (punteggio * scoreboardSimboli[indice_moltiplicatore]);
+		    System.out.println("+"+(punteggio * scoreboardSimboli[indice_moltiplicatore])+" punti per "+this.getNome());// messaggio di test
+		} else if (moltOro==Moltiplicatore.ANGOLO)  {
+			punti += (punteggio * angoli_connessi_in_giocata);
+			System.out.println("+"+(punteggio * angoli_connessi_in_giocata)+" punti per "+this.getNome());
+		} else   {
+			punti += punteggio;
+			System.out.println("+"+punteggio+" punti per "+this.getNome());
+		}	
 			
 	} else {
-		punti += C.getPunti();///
-		System.out.println("+"+C.getPunti()+" punti per "+this.getNome());
+		punti += ((CartaRisorsa)C).getPunti(); //downcast da Carta a Carta Risorsa
+		System.out.println("+"+((CartaRisorsa)C).getPunti()+" punti per "+this.getNome());
 	}
 }
 

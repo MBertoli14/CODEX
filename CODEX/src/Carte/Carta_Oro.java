@@ -37,10 +37,10 @@ private final Moltiplicatore moltiplicatore;
 	/**
 	 * riscrittura del metodo per il caso carta oro restituisce l'oridnale dell moltiplicatore+ il punteggio conferito dalla cata 
 	 */
-	@Override
+
 	public int getPunti() { 
 		if (fronte == true) //super.fronte
-			return  (moltiplicatore.ordinal() <<4) + punti;
+		return 	this.punti;
 		else
 			return 0;
 	}

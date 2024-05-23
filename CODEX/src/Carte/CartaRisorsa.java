@@ -22,7 +22,7 @@ private int punti;
 	 * override di getpunti per il caso carta risorsa se la carta è di fronte restituisce il numero di punti della carta altrimenti
 	 * restituisce 0
 	 */
-	@Override
+
 	public int getPunti() { 
 		if (fronte == true) 
 			return punti;

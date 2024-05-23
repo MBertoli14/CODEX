@@ -128,9 +128,7 @@ public class Carta {
 	 * funzione necessaria per generalizzazione per la classe Carta restituisce 0
 	 * @return
 	 */
-	public int getPunti() {
-		return 0;
-	}
+	
 
 /**
  * 	funzione necessaria per generalizzazione per la classe Carta restituisce 0

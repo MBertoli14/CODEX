@@ -476,7 +476,9 @@ public class Codex {
 	        	   giocatori.get(giocatore_di_turno).printScoreboardSimboli();
 	        	   
 	        	   panel.setMazzo(giocatori.get(giocatore_di_turno).getMazzoGiocato());
-	        	   frame.setVisible(true);
+	        	   if(!frame.isVisible()) {
+	        		  frame.setVisible(true);
+	        	   }
 	        	   break;
 	           case 4:
 	        	   if (tiro_sbloccato == true) {
