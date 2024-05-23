@@ -2,14 +2,8 @@ package ElementiDiBase;
 
 import Carte.*;
 
-import java.util.Scanner;
-import java. util.ArrayList;
-import java.util.Random;
 import java.util.*;
 import java.io.IOException;
-import java.util.Scanner;
-import java. util.ArrayList;
-import java.util.Random;
 import java.util.*;
 import java.io.IOException;
 
@@ -575,7 +569,7 @@ public class Codex {
 	        	   break;
 	           default:
 	           }
-		    } while(((input>0) && (input<9) || input==-1) || ((tiro_sbloccato == true) || (prelievo_sbloccato == true)));
+		   } while(((input>0) && (input<8) || input==-1) || (((tiro_sbloccato == true) || (prelievo_sbloccato == true)) && (input!=9)));
 		   
 		   turno++;
 		   giocatore_di_turno = turno%nPlayer;
@@ -591,29 +585,9 @@ public class Codex {
 			for(int i=0;i<nPlayer;i++) {
 				  giocatori.get(i).CalcoloObbiettivo();
 				}			
-			
-			int punteggioVincitore=giocatori.get(0).getPunti();
-			int vincitore=0;
-			int NobbiettiviVincitore=0;
-			
-			for(int i=0;i<nPlayer;i++) {
-				 if(giocatori.get(i).getPunti()>punteggioVincitore) {
-					 punteggioVincitore=giocatori.get(i).getPunti();
-					 NobbiettiviVincitore=giocatori.get(i).getNumObbiettiviRaggiunti();
-					 vincitore=i;
-				 } else if((giocatori.get(i).getPunti() == punteggioVincitore)) {
-					 if((giocatori.get(i).getNumObbiettiviRaggiunti() > NobbiettiviVincitore)) {
-						 punteggioVincitore=giocatori.get(i).getPunti();
-						 NobbiettiviVincitore=giocatori.get(i).getNumObbiettiviRaggiunti();
-						 vincitore=i;					 
-					 } else if ((giocatori.get(i).getNumObbiettiviRaggiunti() == NobbiettiviVincitore)){
-					 }
-				 }
-			}
-						
-			
-				System.out.println("Il vincitore "+giocatori.get(vincitore).getNome() +" con "+giocatori.get(vincitore).getPunti()+" punti! "+" obbiettivi raggiunti: "+giocatori.get(vincitore).getNumObbiettiviRaggiunti());
-			System.out.println("/////////////////RIEPILOGO//////////////////");
+			Collections.sort(giocatori, Comparator.comparing(Giocatore::getPunti).thenComparing(Giocatore::getNumObbiettiviRaggiunti));
+			Collections.reverse(giocatori);
+			System.out.println("/////////////////CLASSIFICA FINALE//////////////////");
 			for(int i=0;i<nPlayer;i++) {
 				System.out.println(giocatori.get(i).getNome()+" | Punti : "+giocatori.get(i).getPunti()+" | Obbiettivi raggiunti : "+giocatori.get(i).getNumObbiettiviRaggiunti());
 			}
