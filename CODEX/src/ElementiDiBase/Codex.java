@@ -199,7 +199,7 @@ public class Codex {
 		
 		System.out.println("///////////////NUOVE CARTE DISPONIBILI (TAVOLO)///////////////////////");
 		System.out.println("CARTE RISORSA");
-		for (int i = 0;i < dim_cr; i++)
+		for (int i = 0;i <= dim_cr; i++)
 		{	
 			if (i<2)
 				System.out.println(i+">>>"+carteRisorsa.get(i).toString());
@@ -209,7 +209,7 @@ public class Codex {
 		
 		
 		System.out.println("CARTE ORO");
-		for (int i = 0;i < dim_co; i++)
+		for (int i = 0;i <= dim_co; i++)
 		{	
 			if (i<2)
 				System.out.println(i+">>>"+carteOro.get(i).toString());
@@ -379,7 +379,7 @@ public class Codex {
 			}
 		}while(nPlayer<2 || nPlayer>4||nPlayer==-1);
 		for(int i=0;i<nPlayer;i++) {
-		System.out.println("inserisci il Nome del "+(i+1)+" giocatore "+"\n");	
+		System.out.println("inserisci il Nome del "+(i+1)+"^ giocatore "+"\n");	
 		playerName=sc.next();
 		giocatori.add(new Giocatore(playerName));
 		}
@@ -445,12 +445,12 @@ public class Codex {
 			   
 			   System.out.println("1-Visualizza carte in mano"); //
 			   System.out.println("2-Flip carte in mano");
-			   System.out.println("3-Mostra carte giocate"); //
+			   System.out.println("3-Mostra carte giocate (GRAFICO CONNESSIONI)"); //
 			   System.out.println("4-Gioca carta");
 			   System.out.println("5-Visualizza carte disponibili sul tavolo"); //
 			   System.out.println("6-Prendi carta da tavolo"); //
 			   System.out.println("7-Visualizza obbiettivi giocatore");//
-			   System.out.println("8-Passa al prossimo giocatore");//
+			   System.out.println("8-Passa avanti al prossimo turno");//
 			   System.out.println("9-Termina partita");
 			   System.out.println("***************************************************************************");
 			   
@@ -512,8 +512,10 @@ public class Codex {
 		        	   giocatori.get(giocatore_di_turno).GiocaCartaInMano(indice_carta_da_giocare,indice_carta_giocata,indice_angolo_da_giocare,indice_angolo_carta_giocata);
 		        	   panel.setMazzo(giocatori.get(giocatore_di_turno).getMazzoGiocato());
 		        	   frame.setVisible(true);
-		        	   prelievo_sbloccato = true;
+		        	 
 		        	   tiro_sbloccato = false;
+						if (giocatori.get(giocatore_di_turno).getPunti() < 20)
+		        		   prelievo_sbloccato = true;
 		        	   } else {
 		        		   System.out.println("O il mazzo in mano e' vuoto oppure e' composto da sole carte oro lato fronte vincolate da mancanza di risorse");
 		        		   System.out.println("Verificare l'esistenza di carte nella mano (opzione 1) e giocare carte oro su faccia retro (tramite flip-opzione 2) se vincolate");
