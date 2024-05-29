@@ -397,7 +397,7 @@ public class Codex {
 			  input = InputIntVerificato();
 			  if (input == 0) 
 				  giocatori.get(i).getMazzoMano(0).flip();
-		  } while (input != 1);
+		  } while (input != 1 && input != 0);
 		  //Gioca la carta sul tavolo dopo averne scelto il lato iniziale
 		  giocatori.get(i).setMazzoGiocato(giocatori.get(i).removeMazzoMano(0));
    	   	  panel.setMazzo(giocatori.get(i).getMazzoGiocato());
