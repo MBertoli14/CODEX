@@ -1,56 +1,56 @@
 package ElementiDiBase;
 
-import Carte.*;
+import Carte.*; 
 
 import java.util.*;
-import java.io.IOException;
-import java.util.*;
-import java.io.IOException;
-
-
-import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.WindowConstants;
-
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 public class Codex {
 
 	//Cards to initialize	
-
-	private ArrayList<CartaRisorsa> carteRisorsa = new ArrayList<CartaRisorsa>();
-	private ArrayList<Carta_Oro> carteOro = new ArrayList<Carta_Oro>();
-	private ArrayList<CartaObbiettivo> carteObbiettivo = new ArrayList<CartaObbiettivo>();
-	private ArrayList<CartaStarter> carteStarter = new ArrayList<CartaStarter>();
-	private ArrayList<Giocatore> giocatori = new ArrayList<Giocatore>();
+	private ArrayList<CartaRisorsa> carteRisorsa;
+	private ArrayList<Carta_Oro> carteOro;
+	private ArrayList<CartaObbiettivo> carteObbiettivo;
+	private ArrayList<CartaStarter> carteStarter;
+	private ArrayList<Giocatore> giocatori;
 	private int nPlayer;
-	private String cart = "src/ElementiDiBase/immagini/";
+	private String cart;
 
+	/**
+	 * Costruttore
+	 */
+	public Codex() {
+	    this.carteRisorsa = new ArrayList<CartaRisorsa>();
+	    this.carteOro = new ArrayList<Carta_Oro>();
+	    this.carteObbiettivo = new ArrayList<CartaObbiettivo>();
+	    this.carteStarter = new ArrayList<CartaStarter>();
+	    this.giocatori = new ArrayList<Giocatore>();
+	    this.nPlayer=0;
+	    this.cart = "src/ElementiDiBase/immagini/";		
+	}
 	/**
 	 * Inizializza le carte del gioco
 	 */
 	private void InitCards()
 	{
 		////////////////INIZIALIZZAZIONE CARTE RISORSA//////////////////////////////////////////////////////////////////////////////
+		
 		carteRisorsa.add(new CartaRisorsa(Simbolo.INSETTO,Simbolo.INSETTO,Simbolo.BOCCETTA,Simbolo.PIANTA,Simbolo.NO_ANGOLO,0,cart+"CarteRisorsa/carta_risorsa_fronte_1.jpg",cart+"CarteRisorsa/carta_risorsa_retro_insetti_41.jpg"));
 		carteRisorsa.add(new CartaRisorsa(Simbolo.INSETTO,Simbolo.INSETTO,Simbolo.VUOTO,Simbolo.NO_ANGOLO,Simbolo.VUOTO,1,cart+"CarteRisorsa/carta_risorsa_fronte_2.jpg",cart+"CarteRisorsa/carta_risorsa_retro_insetti_41.jpg"));
 		carteRisorsa.add(new CartaRisorsa(Simbolo.INSETTO,Simbolo.VUOTO,Simbolo.NO_ANGOLO,Simbolo.VUOTO,Simbolo.INSETTO,1,cart+"CarteRisorsa/carta_risorsa_fronte_3.jpg",cart+"CarteRisorsa/carta_risorsa_retro_insetti_41.jpg"));
 		carteRisorsa.add(new CartaRisorsa(Simbolo.INSETTO,Simbolo.NO_ANGOLO,Simbolo.VUOTO,Simbolo.INSETTO,Simbolo.VUOTO,1,cart+"CarteRisorsa/carta_risorsa_fronte_4.jpg",cart+"CarteRisorsa/carta_risorsa_retro_insetti_41.jpg"));
 		carteRisorsa.add(new CartaRisorsa(Simbolo.INSETTO,Simbolo.INSETTO,Simbolo.INSETTO,Simbolo.NO_ANGOLO,Simbolo.VUOTO,0,cart+"CarteRisorsa/carta_risorsa_fronte_5.jpg",cart+"CarteRisorsa/carta_risorsa_retro_insetti_41.jpg"));
-		carteRisorsa.add(new CartaRisorsa(Simbolo.INSETTO,Simbolo.VUOTO,Simbolo.NO_ANGOLO,Simbolo.INSETTO,Simbolo.INSETTO,0,cart+"CarteRisorsa/carta_risorsa_fronte_6.jpg",cart+"CarteRisorsa/carta_risorsa_retro_insetti_41.jpg"));
+		carteRisorsa.add(new CartaRisorsa(Simbolo.INSETTO,Simbolo.VUOTO,Simbolo.NO_ANGOLO,Simbolo.INSETTO,Simbolo.INSETTO,0,cart+"CarteRisorsa/carta_risorsa_fronte_6.jpg",cart+"CarteRisorsa/carta_risorsa_retro_insetti_41.jpg"));		
 		carteRisorsa.add(new CartaRisorsa(Simbolo.INSETTO,Simbolo.NO_ANGOLO,Simbolo.ANIMALE,Simbolo.PIUMA,Simbolo.INSETTO,0,cart+"CarteRisorsa/carta_risorsa_fronte_7.jpg",cart+"CarteRisorsa/carta_risorsa_retro_insetti_41.jpg"));
-		carteRisorsa.add(new CartaRisorsa(Simbolo.INSETTO,Simbolo.PERGAMENA,Simbolo.NO_ANGOLO,Simbolo.INSETTO,Simbolo.FUNGO,0,cart+"CarteRisorsa/carta_risorsa_fronte_8.jpg",cart+"CarteRisorsa/carta_risorsa_retro_insetti_41.jpg"));
+		carteRisorsa.add(new CartaRisorsa(Simbolo.INSETTO,Simbolo.PERGAMENA,Simbolo.NO_ANGOLO,Simbolo.INSETTO,Simbolo.FUNGO,0,cart+"CarteRisorsa/carta_risorsa_fronte_8.jpg",cart+"CarteRisorsa/carta_risorsa_retro_insetti_41.jpg"));		
 		carteRisorsa.add(new CartaRisorsa(Simbolo.INSETTO,Simbolo.INSETTO,Simbolo.VUOTO,Simbolo.INSETTO,Simbolo.NO_ANGOLO,0,cart+"CarteRisorsa/carta_risorsa_fronte_9.jpg",cart+"CarteRisorsa/carta_risorsa_retro_insetti_41.jpg"));
 		carteRisorsa.add(new CartaRisorsa(Simbolo.INSETTO,Simbolo.NO_ANGOLO,Simbolo.INSETTO,Simbolo.VUOTO,Simbolo.INSETTO,0,cart+"CarteRisorsa/carta_risorsa_fronte_10.jpg",cart+"CarteRisorsa/carta_risorsa_retro_insetti_41.jpg"));
-
+		
 		carteRisorsa.add(new CartaRisorsa(Simbolo.ANIMALE,Simbolo.VUOTO,Simbolo.VUOTO,Simbolo.NO_ANGOLO,Simbolo.ANIMALE,1,cart+"CarteRisorsa/carta_risorsa_fronte_11.jpg",cart+"CarteRisorsa/carta_risorsa_retro_animali_42.jpg"));
 		carteRisorsa.add(new CartaRisorsa(Simbolo.ANIMALE,Simbolo.VUOTO,Simbolo.VUOTO,Simbolo.ANIMALE,Simbolo.NO_ANGOLO,1,cart+"CarteRisorsa/carta_risorsa_fronte_12.jpg",cart+"CarteRisorsa/carta_risorsa_retro_animali_42.jpg"));
 		carteRisorsa.add(new CartaRisorsa(Simbolo.ANIMALE,Simbolo.NO_ANGOLO,Simbolo.BOCCETTA,Simbolo.INSETTO,Simbolo.ANIMALE,0,cart+"CarteRisorsa/carta_risorsa_fronte_13.jpg",cart+"CarteRisorsa/carta_risorsa_retro_animali_42.jpg"));
@@ -85,10 +85,12 @@ public class Codex {
 		carteRisorsa.add(new CartaRisorsa(Simbolo.FUNGO,Simbolo.NO_ANGOLO,Simbolo.VUOTO,Simbolo.FUNGO,Simbolo.FUNGO,0,cart+"CarteRisorsa/carta_risorsa_fronte_40.jpg",cart+"CarteRisorsa/carta_risorsa_retro_funghi_44.jpg"));
 		
 		///////////////INIZIALIZZAZIONE CARTE ORO//////////////////////////////////////////////////////////////////////////////
+		
 		carteOro.add(new Carta_Oro(Simbolo.PIANTA,Simbolo.NO_ANGOLO,Simbolo.VUOTO,Simbolo.VUOTO,Simbolo.VUOTO,2,new int[]{0,0,1,3},Moltiplicatore.ANGOLO,cart+"carteOro/carta_oro_fronte_45.jpg",cart+"carteOro/carta_oro_retro_piante_87.jpg"));
 		carteOro.add(new Carta_Oro(Simbolo.PIANTA,Simbolo.VUOTO,Simbolo.BOCCETTA,Simbolo.NO_ANGOLO,Simbolo.VUOTO,1,new int[]{1,0,0,2},Moltiplicatore.BOCCETTA,cart+"carteOro/carta_oro_fronte_46.jpg",cart+"carteOro/carta_oro_retro_piante_87.jpg"));
 		carteOro.add(new Carta_Oro(Simbolo.PIANTA,Simbolo.VUOTO,Simbolo.NO_ANGOLO,Simbolo.PERGAMENA,Simbolo.VUOTO,1,new int[]{0,1,0,2},Moltiplicatore.PERGAMENA,cart+"carteOro/carta_oro_fronte_47.jpg",cart+"carteOro/carta_oro_retro_piante_87.jpg"));
 		carteOro.add(new Carta_Oro(Simbolo.PIANTA,Simbolo.PIUMA,Simbolo.VUOTO,Simbolo.VUOTO,Simbolo.NO_ANGOLO,1,new int[]{0,0,1,2},Moltiplicatore.PIUMA,cart+"carteOro/carta_oro_fronte_48.jpg",cart+"carteOro/carta_oro_retro_piante_87.jpg"));
+		
 		carteOro.add(new Carta_Oro(Simbolo.PIANTA,Simbolo.PERGAMENA,Simbolo.NO_ANGOLO,Simbolo.VUOTO,Simbolo.NO_ANGOLO,3,new int[]{0,0,0,3},Moltiplicatore.NESSUNO,cart+"carteOro/carta_oro_fronte_49.jpg",cart+"carteOro/carta_oro_retro_piante_87.jpg"));
 		carteOro.add(new Carta_Oro(Simbolo.PIANTA,Simbolo.VUOTO,Simbolo.PIUMA,Simbolo.NO_ANGOLO,Simbolo.NO_ANGOLO,3,new int[]{0,0,0,3},Moltiplicatore.NESSUNO,cart+"carteOro/carta_oro_fronte_50.jpg",cart+"carteOro/carta_oro_retro_piante_87.jpg"));
 		carteOro.add(new Carta_Oro(Simbolo.PIANTA,Simbolo.VUOTO,Simbolo.VUOTO,Simbolo.NO_ANGOLO,Simbolo.VUOTO,2,new int[]{0,1,0,3},Moltiplicatore.ANGOLO,cart+"carteOro/carta_oro_fronte_51.jpg",cart+"carteOro/carta_oro_retro_piante_87.jpg"));
@@ -128,7 +130,7 @@ public class Codex {
 		carteOro.add(new Carta_Oro(Simbolo.INSETTO,Simbolo.NO_ANGOLO,Simbolo.PIUMA,Simbolo.NO_ANGOLO,Simbolo.VUOTO,3,new int[]{0,0,3,0},Moltiplicatore.NESSUNO,cart+"carteOro/carta_oro_fronte_82.jpg",cart+"carteOro/carta_oro_retro_insetti_86.jpg"));
 		carteOro.add(new Carta_Oro(Simbolo.INSETTO,Simbolo.VUOTO,Simbolo.NO_ANGOLO,Simbolo.PERGAMENA,Simbolo.NO_ANGOLO,3,new int[]{0,0,3,0},Moltiplicatore.NESSUNO,cart+"carteOro/carta_oro_fronte_83.jpg",cart+"carteOro/carta_oro_retro_insetti_86.jpg"));
 		carteOro.add(new Carta_Oro(Simbolo.INSETTO,Simbolo.BOCCETTA,Simbolo.VUOTO,Simbolo.NO_ANGOLO,Simbolo.NO_ANGOLO,3,new int[]{0,0,3,0},Moltiplicatore.NESSUNO,cart+"carteOro/carta_oro_fronte_84.jpg",cart+"carteOro/carta_oro_retro_insetti_86.jpg"));
-	
+
 	
 	
 		///////////////INIZIALIZZAZIONE CARTE STARTER//////////////////////////////////////////////////////////////////////////////
@@ -154,23 +156,22 @@ public class Codex {
 		
 		
 		///////////////INIZIALIZZAZIONE CARTE OBBIETTIVO//////////////////////////////////////////////////////////////////////////////
-		carteObbiettivo.add(new CartaObbiettivo(Simbolo.INSETTO,Obbiettivo.SCALA_DISCENDENTE ,2));
-		carteObbiettivo.add(new CartaObbiettivo(Simbolo.ANIMALE,Obbiettivo.SCALA_ASCENDENTE ,2));
-		carteObbiettivo.add(new CartaObbiettivo(Simbolo.FUNGO,Obbiettivo.TRIO ,2));
-		carteObbiettivo.add(new CartaObbiettivo(Simbolo.PIANTA,Obbiettivo.TRIO ,2));
-		carteObbiettivo.add(new CartaObbiettivo(Simbolo.INSETTO,Obbiettivo.TRIO ,2));
-		carteObbiettivo.add(new CartaObbiettivo(Simbolo.ANIMALE,Obbiettivo.TRIO,2));
-		carteObbiettivo.add(new CartaObbiettivo(Simbolo.FUNGO,Obbiettivo.SCALA_ASCENDENTE ,2));
-		carteObbiettivo.add(new CartaObbiettivo(Simbolo.PIANTA,Obbiettivo.SCALA_DISCENDENTE ,2));
-		carteObbiettivo.add(new CartaObbiettivo(Simbolo.INSETTO,Obbiettivo.SETTE ,3));
-		carteObbiettivo.add(new CartaObbiettivo(Simbolo.ANIMALE,Obbiettivo.SETTE_ROVESCIO ,3));
-		carteObbiettivo.add(new CartaObbiettivo(Simbolo.FUNGO,Obbiettivo.L ,3));
-		carteObbiettivo.add(new CartaObbiettivo(Simbolo.PIANTA,Obbiettivo.L_ROVESCIO ,3));
-		carteObbiettivo.add(new CartaObbiettivo(Simbolo.PIUMA,Obbiettivo.TRIO_UNICO ,3));
-		carteObbiettivo.add(new CartaObbiettivo(Simbolo.BOCCETTA,Obbiettivo.COPPIA ,2));
-		carteObbiettivo.add(new CartaObbiettivo(Simbolo.PERGAMENA,Obbiettivo.COPPIA,2));
-		carteObbiettivo.add(new CartaObbiettivo(Simbolo.PIUMA,Obbiettivo.COPPIA ,2));
-	
+		carteObbiettivo.add(new CartaObbiettivo(Simbolo.INSETTO,Obbiettivo.SCALA_DISCENDENTE ,2,cart+"CarteObbiettivo/carta_obbiettivo_fronte_101.jpg"));
+		carteObbiettivo.add(new CartaObbiettivo(Simbolo.ANIMALE,Obbiettivo.SCALA_ASCENDENTE ,2,cart+"CarteObbiettivo/carta_obbiettivo_fronte_102.jpg"));
+		carteObbiettivo.add(new CartaObbiettivo(Simbolo.FUNGO,Obbiettivo.TRIO ,2,cart+"CarteObbiettivo/carta_obbiettivo_fronte_103.jpg"));
+		carteObbiettivo.add(new CartaObbiettivo(Simbolo.PIANTA,Obbiettivo.TRIO ,2,cart+"CarteObbiettivo/carta_obbiettivo_fronte_104.jpg"));
+		carteObbiettivo.add(new CartaObbiettivo(Simbolo.INSETTO,Obbiettivo.TRIO ,2,cart+"CarteObbiettivo/carta_obbiettivo_fronte_105.jpg"));
+		carteObbiettivo.add(new CartaObbiettivo(Simbolo.ANIMALE,Obbiettivo.TRIO,2,cart+"CarteObbiettivo/carta_obbiettivo_fronte_106.jpg"));
+		carteObbiettivo.add(new CartaObbiettivo(Simbolo.FUNGO,Obbiettivo.SCALA_ASCENDENTE ,2,cart+"CarteObbiettivo/carta_obbiettivo_fronte_107.jpg"));
+		carteObbiettivo.add(new CartaObbiettivo(Simbolo.PIANTA,Obbiettivo.SCALA_DISCENDENTE ,2,cart+"CarteObbiettivo/carta_obbiettivo_fronte_108.jpg"));
+		carteObbiettivo.add(new CartaObbiettivo(Simbolo.INSETTO,Obbiettivo.SETTE ,3,cart+"CarteObbiettivo/carta_obbiettivo_fronte_109.jpg"));
+		carteObbiettivo.add(new CartaObbiettivo(Simbolo.ANIMALE,Obbiettivo.SETTE_ROVESCIO ,3,cart+"CarteObbiettivo/carta_obbiettivo_fronte_110.jpg"));
+		carteObbiettivo.add(new CartaObbiettivo(Simbolo.FUNGO,Obbiettivo.L ,3,cart+"CarteObbiettivo/carta_obbiettivo_fronte_111.jpg"));
+		carteObbiettivo.add(new CartaObbiettivo(Simbolo.PIANTA,Obbiettivo.L_ROVESCIO ,3,cart+"CarteObbiettivo/carta_obbiettivo_fronte_112.jpg"));
+		carteObbiettivo.add(new CartaObbiettivo(Simbolo.PIUMA,Obbiettivo.TRIO_UNICO ,3,cart+"CarteObbiettivo/carta_obbiettivo_fronte_113.jpg"));
+		carteObbiettivo.add(new CartaObbiettivo(Simbolo.BOCCETTA,Obbiettivo.COPPIA ,2,cart+"CarteObbiettivo/carta_obbiettivo_fronte_114.jpg"));
+		carteObbiettivo.add(new CartaObbiettivo(Simbolo.PERGAMENA,Obbiettivo.COPPIA,2,cart+"CarteObbiettivo/carta_obbiettivo_fronte_115.jpg"));
+		carteObbiettivo.add(new CartaObbiettivo(Simbolo.PIUMA,Obbiettivo.COPPIA ,2,cart+"CarteObbiettivo/carta_obbiettivo_fronte_116.jpg"));
 					
 	}
 	/**
@@ -180,12 +181,14 @@ public class Codex {
 	public  int InputIntVerificato() {
 		Scanner sc=new Scanner(System.in);
 		int valoreVerificato=0;
-			try {
+			try {		
 					valoreVerificato=sc.nextInt();		
 				}catch (InputMismatchException e) {
 					System.out.println("il valore inserito e' invalido ");
+					//sc.close();
 					return -1;
 				}
+		//sc.close();
 		return valoreVerificato;
 		}
 	/**
@@ -194,28 +197,34 @@ public class Codex {
 	public void MostraCarteSulTavolo() 
 	{
 		int dim_cr, dim_co;
-		dim_cr = Math.min(2,carteRisorsa.size());
-		dim_co = Math.min(2,carteOro.size());
+		dim_cr = Math.min(3,carteRisorsa.size());
+		dim_co = Math.min(3,carteOro.size());
 		
 		System.out.println("///////////////NUOVE CARTE DISPONIBILI (TAVOLO)///////////////////////");
 		System.out.println("CARTE RISORSA");
-		for (int i = 0;i <= dim_cr; i++)
-		{	
-			if (i<2)
-				System.out.println(i+">>>"+carteRisorsa.get(i).toString());
-			else
-				System.out.println("2>>>"+carteRisorsa.get(2).toStringSimbolo());	
-		}
+		if (dim_cr > 0)
+			for (int i = 0;i < dim_cr; i++)
+			{	
+				if (i<2)
+					System.out.println(i+">>>"+carteRisorsa.get(i).toString());
+				else
+					System.out.println("2>>>"+carteRisorsa.get(2).toStringSimbolo());	
+			}
+		else
+			System.out.println("Carte risorsa finite");
 		
 		
 		System.out.println("CARTE ORO");
-		for (int i = 0;i <= dim_co; i++)
-		{	
-			if (i<2)
-				System.out.println(i+">>>"+carteOro.get(i).toString());
-			else
-				System.out.println("2>>>"+carteOro.get(2).toStringSimbolo());
-		}
+		if (dim_co > 0)
+			for (int i = 0;i < dim_co; i++)
+			{	
+				if (i<2)
+					System.out.println(i+">>>"+carteOro.get(i).toString());
+				else
+					System.out.println("2>>>"+carteOro.get(2).toStringSimbolo());
+			}
+		else
+			System.out.println("Carte oro finite");
 		
 		System.out.println("CARTE OBBIETTIVO (OBBIETTIVI COMUNI)");
 		for (int i = 0;i < 2; i++)
@@ -235,7 +244,6 @@ public class Codex {
 		}
 	   System.out.println(" ");
 	}
-	
 	/**
 	 * Gestisce il posizinamento delle carte regolando:l'angolo a cui va conessa la carta a seconda del angolo
 	 * scelto dal giocatore,e se la carta è oro controlla che il giocatore abbia i requisiti di simboli per 
@@ -307,11 +315,21 @@ public class Codex {
 	
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	/**
-	 * permette di definire un frame grafico specifico per il codex con l'immagine  del tavolo
-	 e delle carte a ogni giocata*/
+	 * permette di inserire in un frame grafico l'immagine delle carte giocate dal giocatore
+	 ad ogni turno*/
 	    class MyPanel extends JPanel {
-		    int x,y;
+		
+		    private static final long serialVersionUID = 1L; //Identificatore richiesto da Eclipse per questo tipo di classe
+			int x,y,cx,cy;
 		    ArrayList<Carta> M;
+		    
+		    
+		    public MyPanel(int centrox, int centroy)
+		    {
+		    	this.cx=centrox; //450
+		    	this.cy=centroy; //450
+		    } 
+		    
 		    public void setMazzo(ArrayList<Carta> Maz) {
 		    	this.M=Maz;
 		    }
@@ -320,56 +338,103 @@ public class Codex {
            protected void paintComponent(Graphics g) {
                super.paintComponent(g);
                
-               
-   		    JTextArea labelW = new JTextArea("",0,900);
-   		    labelW.setOpaque(false);
-   		    labelW.setVisible(true);
-   		    this.add(labelW);
-   		    
-   		    JTextArea labelH = new JTextArea("",900,1);
-   		    labelH.setOpaque(false);
-   		    labelH.setVisible(true);
-   		    this.add(labelH);	        
-               
+	   		    JTextArea labelW = new JTextArea("",0,900);
+	   		    labelW.setOpaque(false);
+	   		    labelW.setVisible(true);
+	   		    this.add(labelW);
+	   		    
+	   		    JTextArea labelH = new JTextArea("",900,1);
+	   		    labelH.setOpaque(false);
+	   		    labelH.setVisible(true);
+	   		    this.add(labelH);
+            
                for (int i=0; i<M.size();i++) {
-	                x = 450 + (M.get(i).getXrel()) * ((int)(160 * 0.76)) ;        
-	                y = 450 - ((M.get(i).getYrel()) * ((int)(120 * 0.58))) ;
+	                x = cx + (M.get(i).getXrel()) * ((int)(160 * 0.76)) ;        
+	                y = cy - ((M.get(i).getYrel()) * ((int)(120 * 0.58))) ;
 	                g.drawImage(M.get(i).getImage(),x,y,160,120,null);
 	                g.drawString(Integer.toString(i), x+77, y);  //.drawString
                }
            }			        
-	   };	
+	   };
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	   
+		/**
+		 * permette di inserire in un frame grafico gli obbiettivi del giocatore
+		 ad ogni turno*/
+		    class PanellObbiettivi extends JPanel {
+			    private static final long serialVersionUID = 2L; //Identificatore richiesto da Eclipse per questo tipo di classe
+				ArrayList<CartaObbiettivo> O;
+				int inizio;
+				int fine;
+				  public PanellObbiettivi()
+				  {
+					  this.inizio=this.fine=0;
+				  } 				
+				  
+			    public void show(ArrayList<CartaObbiettivo> Obj, int i, int f) {
+			    	this.inizio = i;
+			    	this.fine = f;
+			    	this.O=Obj;
+			    }
+	           @Override
+	           protected void paintComponent(Graphics g) {
+	        	   int k=0;
+	               super.paintComponent(g);
+	               for (int i=inizio; i<=fine;i++) {
+		                g.drawImage(O.get(i).getImage(),(k*160),0,160,120,null);
+		                k++;
+	               }
+	           }			        
+		   };	   
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		   /**
+		    * costruisce il frame generico utilizzato per i panelli grafici 
+		    * @param s titolo di intestazione della finestra del frame 
+		    * @return
+		    */
+		   private  JFrame buildFrame(String s) {
+			    JFrame frame = new JFrame(s);
+			    frame.setVisible(false);
+			    return frame;
+			}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /**
  * Inizializza una partita di codex
  */
-	   public void Play() {
+	public void Play() {
+		//Inizializza i mazzi di carte
+		InitCards();
+		
+		JFrame objframe = buildFrame("CODEX : obbiettivi del giocatore di turno");
+		PanellObbiettivi objpanel = new PanellObbiettivi();
+		objpanel.setBackground(Color.white);
+		objpanel.setSize(400, 170);
+		objframe.add(objpanel);
+		objframe.setSize(400, 170);	
+		objframe.setVisible(false);	
+		
+		JFrame frame = buildFrame("CODEX : tavolo del giocatore di turno");
+		MyPanel panel = new MyPanel(450,450);
+	    panel.setBackground(Color.gray); 
+	    JScrollPane scroller = new JScrollPane(panel);
+	    scroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+	    scroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+	    scroller.setSize(900, 900);
+	    scroller.setAutoscrolls(true);
+	    frame.add(scroller);
+	    frame.setSize(900, 900);
+		frame.setVisible(false);
+		
+		//Mischia i quattro mazzi di carte
+		
+		Collections.shuffle(carteRisorsa, new Random(System.currentTimeMillis()));
+		Collections.shuffle(carteOro, new Random(System.currentTimeMillis()));
+		Collections.shuffle(carteStarter, new Random(System.currentTimeMillis()));
+		Collections.shuffle(carteObbiettivo, new Random(System.currentTimeMillis()));
+		
 	
-	//Inizializza i mazzi di carte
-	InitCards();
-	
-	JFrame frame = buildFrame();//GR
-	MyPanel panel = new MyPanel();
-    panel.setBackground(Color.gray); 
-    JScrollPane scroller = new JScrollPane(panel); //NEW
-    scroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);//NEW
-    scroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);//NEW
-    scroller.setSize(900, 900);
-    scroller.setAutoscrolls(true);
-    frame.add(scroller);	
-	frame.setVisible(false);
-	
-	//Mischia i quattro mazzi di carte
-	
-	Collections.shuffle(carteRisorsa, new Random(System.currentTimeMillis()));
-	Collections.shuffle(carteOro, new Random(System.currentTimeMillis()));
-	Collections.shuffle(carteStarter, new Random(System.currentTimeMillis()));
-	Collections.shuffle(carteObbiettivo, new Random(System.currentTimeMillis()));
-	
-	
-	
-	Scanner sc=new Scanner(System.in);
-	String playerName;
+		Scanner sc=new Scanner(System.in);
+		String playerName;
+		
 		do {
 			System.out.println("inserisci il numero di giocatori (da 2 a 4)"+"\n");
 		
@@ -400,31 +465,36 @@ public class Codex {
 		  } while (input != 1 && input != 0);
 		  //Gioca la carta sul tavolo dopo averne scelto il lato iniziale
 		  giocatori.get(i).setMazzoGiocato(giocatori.get(i).removeMazzoMano(0));
-   	   	  panel.setMazzo(giocatori.get(i).getMazzoGiocato());
-   	      frame.setVisible(true);		  
+		  
 		  
 		  do {
-			  System.out.println("Decidi quale carta per obbiettivo individuale scegliere (0,1)");
+			  System.out.println("Decidi quale carta per l'obbiettivo INDIVIDUALE scegliere (0,1)");
 			  System.out.println("0>>>"+carteObbiettivo.get(2).toString());
 			  System.out.println("1>>>"+carteObbiettivo.get(3).toString());
+			  objpanel.show(carteObbiettivo,2,3);
+	       	  if(!objframe.isVisible()) {
+	       		objframe.setVisible(true);
+	       	   }
 			  input = InputIntVerificato();
 		  } while ((input != 0) && (input != 1));
 		  giocatori.get(i).setObbiettivo(carteObbiettivo.remove(2+input));
-		  carteObbiettivo.remove(3 - input);
-		  
+		  carteObbiettivo.remove(2);
+		  objframe.setVisible(false);
+		    
 		  //Ogni giocatore riceve due carte risorsa e una carta oro dal mazzo
 		  giocatori.get(i).setMazzoMano(carteRisorsa.remove(0));
 		  giocatori.get(i).setMazzoMano(carteRisorsa.remove(0));
 		  giocatori.get(i).setMazzoMano(carteOro.remove(0));
 
 		}
+		
+		objpanel.setSize(500, 170);
+		objframe.setSize(500, 170);
 
 		for(int i=0;i<nPlayer;i++) {
 			  giocatori.get(i).setObbiettivo(carteObbiettivo.get(0));
 			  giocatori.get(i).setObbiettivo(carteObbiettivo.get(1));  
 		}		
-		
-		
 		
 		boolean punteggio20Raggiunto = false;
 		int turno = 0;
@@ -437,24 +507,25 @@ public class Codex {
      	   int size_mazzo_mano = giocatori.get(giocatore_di_turno).getSizeMazzoMano();
      	   int size_mazzo_giocato = giocatori.get(giocatore_di_turno).getSizeMazzoGiocato();
      	   boolean prelievo_sbloccato = false;//prima di prelevare una nuova carta bisogna giocare una carta
-     	   boolean tiro_sbloccato = true;
+     	   boolean tiro_sbloccato = true;//ad inizio turno abilita la possibilita' di giocare una carta
+     	   
 		   do {	   
 			   MostraPunteggio();
 			   System.out.println("***************************************************************************");
-			   System.out.println("MENU GIOCATORE di turno ("+ giocatori.get(giocatore_di_turno).getNome()+")");
-			   
-			   System.out.println("1-Visualizza carte in mano"); //
+			   System.out.println("MENU GIOCATORE di turno ("+ giocatori.get(giocatore_di_turno).getNome()+")");			   
+			   System.out.println("1-Visualizza carte in mano");
 			   System.out.println("2-Flip carte in mano");
-			   System.out.println("3-Mostra carte giocate (GRAFICO CONNESSIONI)"); //
+			   System.out.println("3-Mostra carte giocate (GRAFICO CONNESSIONI + RISORSE DISPONIBILI)");
 			   System.out.println("4-Gioca carta");
-			   System.out.println("5-Visualizza carte disponibili sul tavolo"); //
-			   System.out.println("6-Prendi carta da tavolo"); //
-			   System.out.println("7-Visualizza obbiettivi giocatore");//
-			   System.out.println("8-Passa avanti al prossimo turno");//
+			   System.out.println("5-Visualizza carte disponibili sul tavolo");
+			   System.out.println("6-Prendi carta da tavolo"); 
+			   System.out.println("7-Visualizza obbiettivi giocatore");
+			   System.out.println("8-Prossimo turno (prossimo giocatore/obbiettivi+punteggio finale se ultimo turno)");
 			   System.out.println("9-Termina partita");
 			   System.out.println("***************************************************************************");
 			   
 			   input = InputIntVerificato();
+			   objframe.setVisible(false);
 	           switch (input) {
 	           case 1:
 	        	   System.out.println("*****N carte IN MANO = " + giocatori.get(giocatore_di_turno).getSizeMazzoMano()+"*****");
@@ -484,41 +555,58 @@ public class Codex {
 	        	   if (tiro_sbloccato == true) {
 		        	   int indice_carta_da_giocare,indice_angolo_da_giocare, indice_carta_giocata, indice_angolo_carta_giocata; 	   
 		        	   if ((size_mazzo_mano > 0) && (giocatori.get(giocatore_di_turno).bloccoCarteOro() == false)) {
-		        	   do {
+		        		   boolean prerequisiti;
+		        		   boolean postrequisiti;
 			        	   do {
-			        	     System.out.println("inserire l'indice della carta in mano da giocare (da 0 a " + (size_mazzo_mano-1) + ")");
-			        	     indice_carta_da_giocare = InputIntVerificato();
-			        	   } while((indice_carta_da_giocare<0) || (indice_carta_da_giocare >= size_mazzo_mano) );
-			        	   
-			        	   do {
-				        	     System.out.println("inserire l'indice dell'angolo delle precedente carta : 1)Angolo Nord-Ovest;2)Sud-Ovest;3)Nord-Est;4)Sud-Est");
-				        	     indice_angolo_da_giocare = InputIntVerificato();
-				        	} while((indice_angolo_da_giocare<1) || (indice_angolo_da_giocare > 4) );
-			        	   
-			        	   ///
-			        	   do {
-				        	     System.out.println("inserire l'indice della carta su cui giocare a tavolo (da 0 a " + (size_mazzo_giocato-1) + ")");
-				        	     indice_carta_giocata = InputIntVerificato();
-				        	   } while((indice_carta_giocata<0) || (indice_carta_giocata >= size_mazzo_giocato) );
+			        		   prerequisiti = false;
+			        		   postrequisiti = false;
+			        		   
+				        	   do {
+				        	     System.out.println("inserire l'indice della carta in mano da giocare (da 0 a " + (size_mazzo_mano-1) + ")");
+				        	     indice_carta_da_giocare = InputIntVerificato();
+				        	   } while((indice_carta_da_giocare<0) || (indice_carta_da_giocare >= size_mazzo_mano) );
 				        	   
-			        	   Angolo g=new Angolo(Simbolo.VUOTO);
-			        	   indice_angolo_carta_giocata = g.angoloComplementare(indice_angolo_da_giocare);
-				           System.out.println("Angolo carta destinazione = " + indice_angolo_carta_giocata);
-		        	   
-		        	   } while(!GiocataRegolare(giocatori.get(giocatore_di_turno).getMazzoMano(indice_carta_da_giocare),
-		        			                    giocatori.get(giocatore_di_turno).getMazzoGiocato(indice_carta_giocata),
-		        			                    indice_angolo_da_giocare,indice_angolo_carta_giocata,giocatori.get(giocatore_di_turno).gettabSimboli())); //check connessione angoli, check indici angoli src/dest, //se si tratta di carta oro verifica il costo
-		        	   
-		        	   giocatori.get(giocatore_di_turno).GiocaCartaInMano(indice_carta_da_giocare,indice_carta_giocata,indice_angolo_da_giocare,indice_angolo_carta_giocata);
+				        	   do {
+					        	     System.out.println("inserire l'indice dell'angolo delle precedente carta : 1)Angolo Nord-Ovest;2)Sud-Ovest;3)Nord-Est;4)Sud-Est");
+					        	     indice_angolo_da_giocare = InputIntVerificato();
+					        	} while((indice_angolo_da_giocare<1) || (indice_angolo_da_giocare > 4) );
+				        	   
+				        	   ///
+				        	   do {
+					        	     System.out.println("inserire l'indice della carta su cui giocare a tavolo (da 0 a " + (size_mazzo_giocato-1) + ")");
+					        	     indice_carta_giocata = InputIntVerificato();
+					        	   } while((indice_carta_giocata<0) || (indice_carta_giocata >= size_mazzo_giocato) );
+					        	   
+				        	   Angolo g=new Angolo(Simbolo.VUOTO);
+				        	   indice_angolo_carta_giocata = g.angoloComplementare(indice_angolo_da_giocare);
+					           System.out.println("Angolo carta destinazione = " + indice_angolo_carta_giocata);
+					           
+					           prerequisiti = GiocataRegolare(giocatori.get(giocatore_di_turno).getMazzoMano(indice_carta_da_giocare),
+       			                    			              giocatori.get(giocatore_di_turno).getMazzoGiocato(indice_carta_giocata),
+       			                    			              indice_angolo_da_giocare,indice_angolo_carta_giocata,giocatori.get(giocatore_di_turno).gettabSimboli());
+					           
+					           if (prerequisiti)
+					        	   postrequisiti = giocatori.get(giocatore_di_turno).GiocaCartaInMano(indice_carta_da_giocare,indice_carta_giocata,indice_angolo_da_giocare,indice_angolo_carta_giocata);
+					           
+					           if(prerequisiti & (!postrequisiti))
+					        	   System.out.println("Sulla carta da giocare, anche gli angoli opposti a quello indicato per il posizionamento non devono posare su angoli nulli delle carte a tavolo");
+  
+			        	   } while(!postrequisiti); //check connessione angoli, check indici angoli src/dest, //se si tratta di carta oro verifica il costo
+			        	     
 		        	   panel.setMazzo(giocatori.get(giocatore_di_turno).getMazzoGiocato());
 		        	   frame.setVisible(true);
-		        	 
+		        	   
 		        	   tiro_sbloccato = false;
-						if (giocatori.get(giocatore_di_turno).getPunti() < 20)
+		        	   if (((giocatori.get(giocatore_di_turno).getPunti() < 20) && (!punteggio20Raggiunto)) //punteggio20Raggiunto se i 20 punti sono stati raggiunti da qualcun altro
+		        			   && (!((carteRisorsa.size() + carteOro.size()) == 0)))
 		        		   prelievo_sbloccato = true;
+		        	   else if ((giocatori.get(giocatore_di_turno).getPunti() >= 20))
+		        		   punteggio20Raggiunto = true;
+		        	   
 		        	   } else {
 		        		   System.out.println("O il mazzo in mano e' vuoto oppure e' composto da sole carte oro lato fronte vincolate da mancanza di risorse");
 		        		   System.out.println("Verificare l'esistenza di carte nella mano (opzione 1) e giocare carte oro su faccia retro (tramite flip-opzione 2) se vincolate");
+		        		   System.out.println("altrimenti si prosegua con l'opzione 8");
 		        	   }
 	        	   } else
 	        		   System.out.println("Tiro gia' effettuato, per tirare di nuovo cedere il controllo al prossimo giocatore (opzione 8) e aspettare il prossimo turno");
@@ -527,8 +615,8 @@ public class Codex {
 	        	   MostraCarteSulTavolo();
 	        	   break;	        	   
 	           case 6:
-	       		   int dim_cr = Math.min(2,carteRisorsa.size());
-	       		   int dim_co = Math.min(2,carteOro.size());
+	       		   int dim_cr = Math.min(3,carteRisorsa.size());
+	       		   int dim_co = Math.min(3,carteOro.size());
 	       		   int dim;
 	       		   
 	       		   if (prelievo_sbloccato == true) {
@@ -541,9 +629,9 @@ public class Codex {
 		        	   
 		        	   if (dim > 0) {
 			        	   do {
-			        		   System.out.println("Seleziona la posizione della carta 0.."+dim);
+			        		   System.out.println("Seleziona la posizione della carta 0.."+(dim-1));
 			        		   input3 = InputIntVerificato();
-			        	   } while ((input3<0) || (input3>dim)|| (input3==-1));
+			        	   } while ((input3<0) || (input3>(dim-1))|| (input3==-1));
 			        	   	   
 			        	   if (input2 == 0) {
 			        		   giocatori.get(giocatore_di_turno).setMazzoMano(carteRisorsa.remove(input3));
@@ -551,17 +639,35 @@ public class Codex {
 			        	   } else {
 			        		   giocatori.get(giocatore_di_turno).setMazzoMano(carteOro.remove(input3));
 			        	       
-			        	   } 
-		        	   } else 
-		        		   System.out.println("Nessuna carta da prelevare sul tavolo");
+			        	   }
+			        	   
+			        	   prelievo_sbloccato = false; //chiuso con il prelievo si puo' passare al prossimo turno
+		        	   } else {
+		        		   if((input2 == 0)){
+		        			   System.out.println("Nessuna carta risorsa");
+		        			   System.out.println("prelevare carta oro");
+		        		   }
+		        		   if((input2 == 1)){
+		        			   System.out.println("Nessuna carta oro");
+		        			   System.out.println("prelevare carta risorsa");
+		        		   }   
+		        		   System.out.println("solo se ambedue i mazzi al tavolo (risorsa, oro -> opzione 5) sono vuoti passare al prossimo giocatore (opzione 8)");
+		        		   if (((dim_cr + dim_co)) == 0)
+		        			   prelievo_sbloccato = false; //in questo caso si passa il prelievo solo se entrambi i mazzi risorsa/oro sono vuoti
+		        	   }   
 		        	   
-		        	   prelievo_sbloccato = false;
-	       		   } else 
+	       		   } else if (punteggio20Raggiunto)
+	       			   System.out.println("20 punti sono stati raggiunti prosegui con opzione 8");
+	       		     else
 	       			   System.out.println("Se sei qui' il prelievo e' gia' stato effettuato oppure devi prima giocare la carta (opzione 4)");
 	        	   break;
 	           case 7:
 	        	   System.out.println("*****OBBIETTIVI DEL GIOCATORE "+giocatori.get(giocatore_di_turno).getNome()+"*****");
-	        	   giocatori.get(giocatore_di_turno).printObbiettivi();       	   
+	        	   giocatori.get(giocatore_di_turno).printObbiettivi();
+	 			   objpanel.show(giocatori.get(giocatore_di_turno).getObbiettivi(),0,giocatori.get(giocatore_di_turno).getObbiettivi().size()-1);
+		       	   if(!objframe.isVisible()) {
+		       		objframe.setVisible(true);
+		       	   }
 	        	   break;	        	   
 	           case 8:
 	        	   frame.setVisible(false);
@@ -579,9 +685,7 @@ public class Codex {
 		   giocatore_di_turno = turno%nPlayer;
 		   TotCarteGiocabili=0;
 		   for (int i = 0; i < nPlayer; i++) {
-				   TotCarteGiocabili+=(giocatori.get(i).getSizeMazzoMano()); //* (giocatori.get(i).bloccoCarteOro()? 0 : 1));
-			       if (giocatori.get(i).getPunti() >= 20)
-			    	   punteggio20Raggiunto = true;	   
+				   TotCarteGiocabili+=(giocatori.get(i).getSizeMazzoMano());	   
 		   } 		   
 		  }
 		
@@ -596,20 +700,6 @@ public class Codex {
 				System.out.println(giocatori.get(i).getNome()+" | Punti : "+giocatori.get(i).getPunti()+" | Obbiettivi raggiunti : "+giocatori.get(i).getNumObbiettiviRaggiunti());
 			}
 		
-			
-		
+			sc.close();		
 	}
-
-	//GR
-	   /**
-	    * costruisce un frame per la rappresentazione del tavolo da gioco 
-	    * @return
-	    */
-	private  JFrame buildFrame() {
-	    JFrame frame = new JFrame("Codex");
-	    frame.setSize(900, 900);
-	    frame.setVisible(false);
-	    return frame;
-	}
-
 }

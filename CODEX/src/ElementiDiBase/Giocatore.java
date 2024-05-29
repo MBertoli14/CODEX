@@ -3,6 +3,7 @@ package ElementiDiBase;
 import Carte.*;
 
 import java. util. ArrayList;
+import java.util.Arrays;
 
 public class Giocatore implements GiocataCartaInMano {
 private String nickname;
@@ -46,6 +47,14 @@ public Carta getMazzoMano(int pos) {
 }
 
 /**
+ * Restituisce l'array list del mazzoMano
+ * @return
+ */
+public ArrayList<Carta> getMazzoMano() {
+	return mazzoMano;
+}
+
+/**
  * Permette di rimuovere una carta dal mazzoMano
  * @param pos posizione della carta rimossa
  * @return
@@ -86,149 +95,173 @@ public void setMazzoGiocato(Carta C) {
 }
 
 /*metodo presente nell'interfaccia GiocataCartaInMano*/
-public void GiocaCartaInMano(int pos_carta_A,int pos_carta_B, int angolo_A, int angolo_B) { //rimuove dalla mano la carta in pos e mette nel giocato
+public boolean GiocaCartaInMano(int pos_carta_A,int pos_carta_B, int angolo_A, int angolo_B) { //rimuove dalla mano la carta in pos e mette nel giocato
 	//aggiungere tra i parametri : angolo della carta da giocare, carta dest, angolo carta dest
 	//controllo di coerenza della posizione finale
 	//dopo giocata aggiornare coordinate relative
 	//aggiornare il punteggio e la tabella dei simboli
-	int Xseconda_carta_coperta = 0;
-	int Yseconda_carta_coperta = 0;
+	int x_seconda_carta_coperta = 0;
+	int y_seconda_carta_coperta = 0;
 	int secondo_angolo_coperto = 0;
-	int Xterza_carta_coperta = 0;
-	int Yterza_carta_coperta = 0;
+	int x_terza_carta_coperta = 0;
+	int y_terza_carta_coperta = 0;
 	int terzo_angolo_coperto = 0;
-	int Xquarta_carta_coperta = 0;
-	int Yquarta_carta_coperta = 0;
+	int x_quarta_carta_coperta = 0;
+	int y_quarta_carta_coperta = 0;
 	int quarto_angolo_coperto = 0;
-	
-	Carta C = mazzoMano.remove(pos_carta_A);
-	C.getAngolo(angolo_A - 1).setConnessione(true); 
-	C.setXrel(mazzoGiocato.get(pos_carta_B).getXrel());
-	C.setYrel(mazzoGiocato.get(pos_carta_B).getYrel());
+	int x_cartaGiocata = 0;
+	int y_cartaGiocata = 0;
+	boolean cartagiocabile = true;
+		
+	x_cartaGiocata = mazzoGiocato.get(pos_carta_B).getXrel(); //solo inizializzazione
+	y_cartaGiocata = mazzoGiocato.get(pos_carta_B).getYrel(); //solo inizializzazione
 	switch(angolo_A) {
 		case 1:
-			C.setXrel((C.getXrel()+1));
-			C.setYrel((C.getYrel()-1));
+			x_cartaGiocata = x_cartaGiocata + 1;
+			y_cartaGiocata = y_cartaGiocata - 1;
 			
-			Xseconda_carta_coperta = (C.getXrel()-1);
-			Yseconda_carta_coperta = (C.getYrel()-1);
+			x_seconda_carta_coperta = (x_cartaGiocata-1);
+			y_seconda_carta_coperta = (y_cartaGiocata-1);
 			secondo_angolo_coperto = 3;
 			
-			Xterza_carta_coperta = (C.getXrel()+1);
-			Yterza_carta_coperta = (C.getYrel()+1);
+			x_terza_carta_coperta = (x_cartaGiocata+1);
+			y_terza_carta_coperta = (y_cartaGiocata+1);
 			terzo_angolo_coperto = 2;
 			
-			Xquarta_carta_coperta = (C.getXrel()+1);
-			Yquarta_carta_coperta = (C.getYrel()-1);
+			x_quarta_carta_coperta = (x_cartaGiocata+1);
+			y_quarta_carta_coperta = (y_cartaGiocata-1);
 			quarto_angolo_coperto = 1;			
 			break;
 		case 2:
-			C.setXrel((C.getXrel()+1));
-			C.setYrel((C.getYrel()+1));
+			x_cartaGiocata = x_cartaGiocata + 1;
+			y_cartaGiocata = y_cartaGiocata + 1;
 			
-			Xseconda_carta_coperta = (C.getXrel()-1);
-			Yseconda_carta_coperta = (C.getYrel()+1);
+			x_seconda_carta_coperta = (x_cartaGiocata-1);
+			y_seconda_carta_coperta = (y_cartaGiocata+1);
 			secondo_angolo_coperto = 4;
 						
-			Xterza_carta_coperta = (C.getXrel()+1);
-			Yterza_carta_coperta = (C.getYrel()+1);
+			x_terza_carta_coperta = (x_cartaGiocata+1);
+			y_terza_carta_coperta = (y_cartaGiocata+1);
 			terzo_angolo_coperto = 2;
 			
-			Xquarta_carta_coperta = (C.getXrel()+1);
-			Yquarta_carta_coperta = (C.getYrel()-1);
+			x_quarta_carta_coperta = (x_cartaGiocata+1);
+			y_quarta_carta_coperta = (y_cartaGiocata-1);
 			quarto_angolo_coperto = 1;			
 			break;
 		case 3:
-			C.setXrel((C.getXrel()-1));
-			C.setYrel((C.getYrel()-1));
+			x_cartaGiocata = x_cartaGiocata - 1;
+			y_cartaGiocata = y_cartaGiocata - 1;
 			
-			Xseconda_carta_coperta = (C.getXrel()-1);
-			Yseconda_carta_coperta = (C.getYrel()+1);
+			x_seconda_carta_coperta = (x_cartaGiocata-1);
+			y_seconda_carta_coperta = (y_cartaGiocata+1);
 			secondo_angolo_coperto = 4;
 						
-			Xterza_carta_coperta = (C.getXrel()-1);
-			Yterza_carta_coperta = (C.getYrel()-1);
+			x_terza_carta_coperta = (x_cartaGiocata-1);
+			y_terza_carta_coperta = (y_cartaGiocata-1);
 			terzo_angolo_coperto = 3;
 			
-			Xquarta_carta_coperta = (C.getXrel()+1);
-			Yquarta_carta_coperta = (C.getYrel()-1);
+			x_quarta_carta_coperta = (x_cartaGiocata+1);
+			y_quarta_carta_coperta = (y_cartaGiocata-1);
 			quarto_angolo_coperto = 1;			
 			break;
 		case 4:
-			C.setXrel((C.getXrel()-1));
-			C.setYrel((C.getYrel()+1));
+			x_cartaGiocata = x_cartaGiocata - 1;
+			y_cartaGiocata = y_cartaGiocata + 1;
 			
-			Xseconda_carta_coperta = (C.getXrel()-1);
-			Yseconda_carta_coperta = (C.getYrel()+1);
+			x_seconda_carta_coperta = (x_cartaGiocata-1);
+			y_seconda_carta_coperta = (y_cartaGiocata+1);
 			secondo_angolo_coperto = 4;
 						
-			Xterza_carta_coperta = (C.getXrel()-1);
-			Yterza_carta_coperta = (C.getYrel()-1);
+			x_terza_carta_coperta = (x_cartaGiocata-1);
+			y_terza_carta_coperta = (y_cartaGiocata-1);
 			terzo_angolo_coperto = 3;
 			
-			Xquarta_carta_coperta = (C.getXrel()+1);
-			Yquarta_carta_coperta = (C.getYrel()+1);
+			x_quarta_carta_coperta = (x_cartaGiocata+1);
+			y_quarta_carta_coperta = (y_cartaGiocata+1);
 			quarto_angolo_coperto = 2;			
 			break;			
 		default:
 	}
-	mazzoGiocato.add(C);
-	mazzoGiocato.get(pos_carta_B).getAngolo(angolo_B - 1).setConnessione(true);
-	mazzoGiocato.get(pos_carta_B).getAngolo(angolo_B - 1).setConnessione(false);
-	int idx = mazzoGiocato.get(pos_carta_B).getAngolo(angolo_B - 1).getSimbolo().ordinal();
-	if (idx < 7)
-		scoreboardSimboli[idx]-=1;
 	
-	int angoli_connessi_in_giocata = 1; //Serve per punteggio carta oro
-	int angolo_coperto = 0;
 	int k;
 	for(k = 0; k<mazzoGiocato.size(); k++) {
+		if ((mazzoGiocato.get(k).getXrel() == x_seconda_carta_coperta) && (mazzoGiocato.get(k).getYrel() == y_seconda_carta_coperta)){
+			    cartagiocabile = !(mazzoGiocato.get(k).getAngolo(secondo_angolo_coperto - 1).getSimbolo() == Simbolo.NO_ANGOLO);
+		} else if ((mazzoGiocato.get(k).getXrel() == x_terza_carta_coperta) && (mazzoGiocato.get(k).getYrel() == y_terza_carta_coperta)){
+				cartagiocabile = !(mazzoGiocato.get(k).getAngolo(terzo_angolo_coperto - 1).getSimbolo() == Simbolo.NO_ANGOLO); 
+		} else if ((mazzoGiocato.get(k).getXrel() == x_quarta_carta_coperta) && (mazzoGiocato.get(k).getYrel() == y_quarta_carta_coperta)){
+				cartagiocabile = !(mazzoGiocato.get(k).getAngolo(quarto_angolo_coperto - 1).getSimbolo() == Simbolo.NO_ANGOLO);
+		}		
+		if (!cartagiocabile)
+			break;
+	}
+	
+	if (cartagiocabile) {
+		Carta C = mazzoMano.remove(pos_carta_A);
+		C.getAngolo(angolo_A - 1).setConnessione(true);
+		C.setXrel(x_cartaGiocata);
+		C.setYrel(y_cartaGiocata);
 		
-		if ((mazzoGiocato.get(k).getXrel() == Xseconda_carta_coperta) && (mazzoGiocato.get(k).getYrel() == Yseconda_carta_coperta)) {
-			angoli_connessi_in_giocata++;
-			angolo_coperto = secondo_angolo_coperto;
-		} else if ((mazzoGiocato.get(k).getXrel() == Xterza_carta_coperta) && (mazzoGiocato.get(k).getYrel() == Yterza_carta_coperta)) {
-			angoli_connessi_in_giocata++;
-			angolo_coperto = terzo_angolo_coperto;	
-		} else if ((mazzoGiocato.get(k).getXrel() == Xquarta_carta_coperta) && (mazzoGiocato.get(k).getYrel() == Yquarta_carta_coperta)) {
-			angoli_connessi_in_giocata++;
-			angolo_coperto = quarto_angolo_coperto;
+		mazzoGiocato.add(C);
+		mazzoGiocato.get(pos_carta_B).getAngolo(angolo_B - 1).setConnessione(true);
+		mazzoGiocato.get(pos_carta_B).getAngolo(angolo_B - 1).setVisibilita(false);
+		int idx = mazzoGiocato.get(pos_carta_B).getAngolo(angolo_B - 1).getSimbolo().ordinal();
+		if (idx < 7)
+			scoreboardSimboli[idx]-=1;
+		
+		int angoli_connessi_in_giocata = 1; //Serve per punteggio carta oro
+		int angolo_coperto = 0;
+		//int k;
+		for(k = 0; k<mazzoGiocato.size(); k++) {
+			
+			if ((mazzoGiocato.get(k).getXrel() == x_seconda_carta_coperta) && (mazzoGiocato.get(k).getYrel() == y_seconda_carta_coperta)) {
+				angoli_connessi_in_giocata++;
+				angolo_coperto = secondo_angolo_coperto;
+			} else if ((mazzoGiocato.get(k).getXrel() == x_terza_carta_coperta) && (mazzoGiocato.get(k).getYrel() == y_terza_carta_coperta)) {
+				angoli_connessi_in_giocata++;
+				angolo_coperto = terzo_angolo_coperto;	
+			} else if ((mazzoGiocato.get(k).getXrel() == x_quarta_carta_coperta) && (mazzoGiocato.get(k).getYrel() == y_quarta_carta_coperta)) {
+				angoli_connessi_in_giocata++;
+				angolo_coperto = quarto_angolo_coperto;
+			}
+			
+			if (angolo_coperto != 0) {
+				mazzoGiocato.get(k).getAngolo(angolo_coperto - 1).setConnessione(true);
+				mazzoGiocato.get(k).getAngolo(angolo_coperto - 1).setVisibilita(false);
+					idx = mazzoGiocato.get(k).getAngolo(angolo_coperto - 1).getSimbolo().ordinal();
+					if (idx < 7)
+						scoreboardSimboli[idx]-=1;
+				angolo_coperto = 0;
+		    }	
+		}
+		int cardSimb[] = C.getSimboliVisibili();
+		for(int i=0;i<7;i++) {
+			scoreboardSimboli[i]+= cardSimb[i];
+		}	
+		
+		if ((C.getClass().getName().contains("Oro"))) {
+					
+			int punteggio = ((Carta_Oro)C).getPunti();  //downcast da Carta a Carta oro
+			Moltiplicatore moltOro=((Carta_Oro)C).getMoltiplicatore(); //downcast da Carta a Carta oro
+			if (moltOro!=Moltiplicatore.ANGOLO&&moltOro!=Moltiplicatore.NESSUNO)  {
+				int indice_moltiplicatore=(moltOro.ordinal())+4;
+				punti += (punteggio * scoreboardSimboli[indice_moltiplicatore]);
+			    System.out.println("+"+(punteggio * scoreboardSimboli[indice_moltiplicatore])+" punti per "+this.getNome());// messaggio di test
+			} else if (moltOro==Moltiplicatore.ANGOLO)  {
+				punti += (punteggio * angoli_connessi_in_giocata);
+				System.out.println("+"+(punteggio * angoli_connessi_in_giocata)+" punti per "+this.getNome());
+			} else   {
+				punti += punteggio;
+				System.out.println("+"+punteggio+" punti per "+this.getNome());
+			}	
+				
+		} else {
+			punti += ((CartaRisorsa)C).getPunti(); //downcast da Carta a Carta Risorsa
+			System.out.println("+"+((CartaRisorsa)C).getPunti()+" punti per "+this.getNome());
 		}
 		
-		if (angolo_coperto != 0) {
-			mazzoGiocato.get(k).getAngolo(angolo_coperto - 1).setConnessione(true);
-			mazzoGiocato.get(k).getAngolo(angolo_coperto - 1).setVisibilita(false);
-				idx = mazzoGiocato.get(k).getAngolo(angolo_coperto - 1).getSimbolo().ordinal();
-				if (idx < 7)
-					scoreboardSimboli[idx]-=1;
-			angolo_coperto = 0;
-	    }	
 	}
-	int cardSimb[] = C.getSimboliVisibili();
-	for(int i=0;i<7;i++) {
-		scoreboardSimboli[i]+= cardSimb[i];
-	}	
-	
-	if ((C.getClass().getName().contains("Oro"))) {
-				
-		int punteggio = ((Carta_Oro)C).getPunti();  //downcast da Carta a Carta oro
-		Moltiplicatore moltOro=((Carta_Oro)C).getMoltiplicatore(); //downcast da Carta a Carta oro
-		if (moltOro!=Moltiplicatore.ANGOLO&&moltOro!=Moltiplicatore.NESSUNO)  {
-			int indice_moltiplicatore=(moltOro.ordinal())+4;
-			punti += (punteggio * scoreboardSimboli[indice_moltiplicatore]);
-		    System.out.println("+"+(punteggio * scoreboardSimboli[indice_moltiplicatore])+" punti per "+this.getNome());// messaggio di test
-		} else if (moltOro==Moltiplicatore.ANGOLO)  {
-			punti += (punteggio * angoli_connessi_in_giocata);
-			System.out.println("+"+(punteggio * angoli_connessi_in_giocata)+" punti per "+this.getNome());
-		} else   {
-			punti += punteggio;
-			System.out.println("+"+punteggio+" punti per "+this.getNome());
-		}	
-			
-	} else {
-		punti += ((CartaRisorsa)C).getPunti(); //downcast da Carta a Carta Risorsa
-		System.out.println("+"+((CartaRisorsa)C).getPunti()+" punti per "+this.getNome());
-	}
+	return cartagiocabile;
 }
 
 /**
@@ -285,7 +318,7 @@ public void printObbiettivi() {
  * stampa la scoreboard dei simboli di ciascun giocatore in partita
  */
 public void printScoreboardSimboli() {
-		System.out.println("SIMBOLI SCOPERTI per giocatore di turno: ANIMALI "+scoreboardSimboli[0]+
+		System.out.println("RISORSE DISPONIBILI per giocatore di turno: ANIMALI "+scoreboardSimboli[0]+
 						   " FUNGHI "+scoreboardSimboli[1]+
 						   " INSETTI "+scoreboardSimboli[2]+
 						   " PIANTE "+scoreboardSimboli[3]+
@@ -341,6 +374,14 @@ public int getNumObbiettiviRaggiunti() {
 }
 
 /**
+ * Restituisce l'array list degli obbiettivi
+ * @return
+ */
+public ArrayList<CartaObbiettivo> getObbiettivi() {
+	return obbiettivi;
+}
+
+/**
  * Calcola gli obbiettivi del giocatore aggiornando di volta in volta il punteggio singolo del giocatore
  */
 	public void CalcoloObbiettivo() {
@@ -348,6 +389,7 @@ public int getNumObbiettiviRaggiunti() {
 		int indice2 = 0;
 		int indice3 = 0;
 		int NCarte = mazzoGiocato.size();
+		boolean gia_in_tris[] = new boolean[NCarte];
 		System.out.println("------------------------------------");
 		System.out.println("Valutazione punti obbiettivo giocatore "+getNome());
 		for (int i = 0;i<obbiettivi.size();i++) {
@@ -398,36 +440,43 @@ public int getNumObbiettiviRaggiunti() {
 					break;
 					case SCALA_ASCENDENTE:	
 					System.out.println("Valutazione scala ascendente");
-					
+					Arrays.fill(gia_in_tris, false);
 					if ((obbiettivi.get(i).getSimbolo() == Simbolo.FUNGO) || (obbiettivi.get(i).getSimbolo() == Simbolo.ANIMALE)) {
 					for (indice1=0;indice1<(NCarte);indice1++) {
-						if ((mazzoGiocato.get(indice1).getSimbolo()== obbiettivi.get(i).getSimbolo()) && (!mazzoGiocato.get(indice1).getClass().getName().contains("Starter")) )  {
+						int prima = 0;
+						int seconda = 0;
+						int terza = 0;						
+						if (!gia_in_tris[indice1] && (mazzoGiocato.get(indice1).getSimbolo()== obbiettivi.get(i).getSimbolo()) && (!mazzoGiocato.get(indice1).getClass().getName().contains("Starter")) )  {
 							
 							    int X1 = mazzoGiocato.get(indice1).getXrel();
 							    int Y1 = mazzoGiocato.get(indice1).getYrel();
 							    
-							    System.out.println("primo livello OK");
+							    prima = indice1;//Indice prima carta candidata al tris
 							
 								for (indice2=0;indice2<(NCarte);indice2++) {
 									
 								    int X2 = mazzoGiocato.get(indice2).getXrel();
 								    int Y2 = mazzoGiocato.get(indice2).getYrel();
 									
-									if ((mazzoGiocato.get(indice2).getSimbolo()== obbiettivi.get(i).getSimbolo())&& (!mazzoGiocato.get(indice2).getClass().getName().contains("Starter")) &&
+									if (!gia_in_tris[indice2] && (mazzoGiocato.get(indice2).getSimbolo()== obbiettivi.get(i).getSimbolo())&& (!mazzoGiocato.get(indice2).getClass().getName().contains("Starter")) &&
 								        (indice2!=indice1)&& (X2==X1+1)&& (Y2==Y1+1)) {
 										
-										System.out.println("secondo livello OK");
+										seconda = indice2;//Indice seconda carta candidata al tris
 										
 										for (indice3=0;indice3<(NCarte);indice3++) {
 											
 										    int X3 = mazzoGiocato.get(indice3).getXrel();
 										    int Y3 = mazzoGiocato.get(indice3).getYrel();
 											
-											if ((mazzoGiocato.get(indice3).getSimbolo()== obbiettivi.get(i).getSimbolo())&& (!mazzoGiocato.get(indice3).getClass().getName().contains("Starter")) &&
+											if (!gia_in_tris[indice3] && (mazzoGiocato.get(indice3).getSimbolo()== obbiettivi.get(i).getSimbolo())&& (!mazzoGiocato.get(indice3).getClass().getName().contains("Starter")) &&
 											        (indice3!=indice2)&& (X3==X2+1)&& (Y3==Y2+1)) {
+												terza = indice3;//Indice terza carta candidata al tris
+												gia_in_tris[prima]=gia_in_tris[seconda]=gia_in_tris[terza]=true;
+												
 											    p++; 
-											    System.out.println("terzo livello OK, numero di scale ascendenti "+p);
+											    System.out.println("Numero di scale ascendenti "+p);
 											    this.NumObbiettiviRaggiunti++;
+											    
 										     }
 								        }
 								    }
@@ -442,33 +491,41 @@ public int getNumObbiettiviRaggiunti() {
 					break;
 				case SCALA_DISCENDENTE:
 					System.out.println("Valutazione scala discendente");
-					
+					Arrays.fill(gia_in_tris, false);
 					if ((obbiettivi.get(i).getSimbolo() == Simbolo.INSETTO) || (obbiettivi.get(i).getSimbolo() == Simbolo.PIANTA)) {
-					for (indice1=0;indice1<(NCarte);indice1++) {	
-						if ((mazzoGiocato.get(indice1).getSimbolo()== obbiettivi.get(i).getSimbolo()) && (!mazzoGiocato.get(indice1).getClass().getName().contains("Starter")) ) {
+					for (indice1=0;indice1<(NCarte);indice1++) {
+						int prima = 0;
+						int seconda = 0;
+						int terza = 0;
+						if (!gia_in_tris[indice1] && (mazzoGiocato.get(indice1).getSimbolo()== obbiettivi.get(i).getSimbolo()) && (!mazzoGiocato.get(indice1).getClass().getName().contains("Starter")) ) {
 							
 							    int X1 = mazzoGiocato.get(indice1).getXrel();
 							    int Y1 = mazzoGiocato.get(indice1).getYrel();
 							    
+							    prima = indice1;//Indice prima carta candidata al tris
 							
 								for (indice2=0;indice2<(NCarte);indice2++) {
 									
 								    int X2 = mazzoGiocato.get(indice2).getXrel();
 								    int Y2 = mazzoGiocato.get(indice2).getYrel();
 									
-									if ((mazzoGiocato.get(indice2).getSimbolo()== obbiettivi.get(i).getSimbolo())&& (!mazzoGiocato.get(indice2).getClass().getName().contains("Starter")) &&
+									if (!gia_in_tris[indice2] && (mazzoGiocato.get(indice2).getSimbolo()== obbiettivi.get(i).getSimbolo())&& (!mazzoGiocato.get(indice2).getClass().getName().contains("Starter")) &&
 								        (indice2!=indice1)&& (X2==X1+1)&& (Y2==Y1-1)) {
 										
+										seconda = indice2;//Indice seconda carta candidata al tris
 										
 										for (indice3=0;indice3<(NCarte);indice3++) {
 											
 										    int X3 = mazzoGiocato.get(indice3).getXrel();
 										    int Y3 = mazzoGiocato.get(indice3).getYrel();
 											
-											if ((mazzoGiocato.get(indice3).getSimbolo()== obbiettivi.get(i).getSimbolo())&& (!mazzoGiocato.get(indice3).getClass().getName().contains("Starter")) &&
+											if (!gia_in_tris[indice3] && (mazzoGiocato.get(indice3).getSimbolo()== obbiettivi.get(i).getSimbolo())&& (!mazzoGiocato.get(indice3).getClass().getName().contains("Starter")) &&
 											        (indice3!=indice2)&& (X3==X2+1)&& (Y3==Y2-1)) {
+												terza = indice3;//Indice terza carta candidata al tris
+												gia_in_tris[prima]=gia_in_tris[seconda]=gia_in_tris[terza]=true;
+												
 											    p++; 
-											    System.out.println("terzo livello OK, numero di scale discendenti "+p);
+											    System.out.println("Numero di scale discendenti "+p);
 											    this.NumObbiettiviRaggiunti++;
 										     }
 								        }
@@ -484,33 +541,40 @@ public int getNumObbiettiviRaggiunti() {
 					break;
 				case L:	
 					System.out.println("Valutazione L");
-					
+					Arrays.fill(gia_in_tris, false);
 					for (indice1=0;indice1<(NCarte);indice1++) {
-						
-						if ((mazzoGiocato.get(indice1).getSimbolo()==Simbolo.FUNGO) && (!mazzoGiocato.get(indice1).getClass().getName().contains("Starter")) ) {
+						int prima = 0;
+						int seconda = 0;
+						int terza = 0;						
+						if (!gia_in_tris[indice1] && (mazzoGiocato.get(indice1).getSimbolo()==Simbolo.FUNGO) && (!mazzoGiocato.get(indice1).getClass().getName().contains("Starter")) ) {
 							
 							    int X1 = mazzoGiocato.get(indice1).getXrel();
 							    int Y1 = mazzoGiocato.get(indice1).getYrel();
 							    
-							
+							    prima = indice1;//Indice prima carta candidata al tris
+							    
 								for (indice2=0;indice2<(NCarte);indice2++) {
 									
 								    int X2 = mazzoGiocato.get(indice2).getXrel();
 								    int Y2 = mazzoGiocato.get(indice2).getYrel();
-									
-									if ((mazzoGiocato.get(indice2).getSimbolo()==Simbolo.FUNGO)&& (!mazzoGiocato.get(indice2).getClass().getName().contains("Starter")) &&
+								    
+									if (!gia_in_tris[indice2] && (mazzoGiocato.get(indice2).getSimbolo()==Simbolo.FUNGO)&& (!mazzoGiocato.get(indice2).getClass().getName().contains("Starter")) &&
 								        (indice2!=indice1)&& (X2==X1)&& (Y2==Y1-2)) {
 										
+										seconda = indice2;//Indice seconda carta candidata al tris
 										
 										for (indice3=0;indice3<(NCarte);indice3++) {
 											
 										    int X3 = mazzoGiocato.get(indice3).getXrel();
 										    int Y3 = mazzoGiocato.get(indice3).getYrel();
 											
-											if ((mazzoGiocato.get(indice3).getSimbolo()==Simbolo.PIANTA)&& (!mazzoGiocato.get(indice3).getClass().getName().contains("Starter")) &&
+											if (!gia_in_tris[indice3] && (mazzoGiocato.get(indice3).getSimbolo()==Simbolo.PIANTA)&& (!mazzoGiocato.get(indice3).getClass().getName().contains("Starter")) &&
 											        (indice3!=indice2)&& (X3==X2+1)&& (Y3==Y2-1)) {
+												terza = indice3;//Indice terza carta candidata al tris
+												gia_in_tris[prima]=gia_in_tris[seconda]=gia_in_tris[terza]=true;
+												
 											    p++; 
-											    System.out.println("terzo livello OK, numero di L "+p);
+											    System.out.println("Numero di L "+p);
 											    this.NumObbiettiviRaggiunti++;
 										     }
 								        }
@@ -525,32 +589,40 @@ public int getNumObbiettiviRaggiunti() {
 					break;
 				case L_ROVESCIO:
 					System.out.println("Valutazione L rovescio");
-					
+					Arrays.fill(gia_in_tris, false);
 					for (indice1=0;indice1<(NCarte);indice1++) {
-						if ((mazzoGiocato.get(indice1).getSimbolo()==Simbolo.PIANTA) && (!mazzoGiocato.get(indice1).getClass().getName().contains("Starter")) )  {
+						int prima = 0;
+						int seconda = 0;
+						int terza = 0;						
+						if (!gia_in_tris[indice1] && (mazzoGiocato.get(indice1).getSimbolo()==Simbolo.PIANTA) && (!mazzoGiocato.get(indice1).getClass().getName().contains("Starter")) )  {
 							
 							    int X1 = mazzoGiocato.get(indice1).getXrel();
 							    int Y1 = mazzoGiocato.get(indice1).getYrel();
 							    
+							    prima = indice1;//Indice prima carta candidata al tris
 							
 								for (indice2=0;indice2<(NCarte);indice2++) {
 									
 								    int X2 = mazzoGiocato.get(indice2).getXrel();
 								    int Y2 = mazzoGiocato.get(indice2).getYrel();
 									
-									if ((mazzoGiocato.get(indice2).getSimbolo()==Simbolo.PIANTA)&& (!mazzoGiocato.get(indice2).getClass().getName().contains("Starter")) &&
+									if (!gia_in_tris[indice2] && (mazzoGiocato.get(indice2).getSimbolo()==Simbolo.PIANTA)&& (!mazzoGiocato.get(indice2).getClass().getName().contains("Starter")) &&
 								        (indice2!=indice1)&& (X2==X1)&& (Y2==Y1-2)) {
 										
+										seconda = indice2;//Indice seconda carta candidata al tris
 										
 										for (indice3=0;indice3<(NCarte);indice3++) {
 											
 										    int X3 = mazzoGiocato.get(indice3).getXrel();
 										    int Y3 = mazzoGiocato.get(indice3).getYrel();
 											
-											if ((mazzoGiocato.get(indice3).getSimbolo()==Simbolo.INSETTO)&& (!mazzoGiocato.get(indice3).getClass().getName().contains("Starter")) &&
+											if (!gia_in_tris[indice3] && (mazzoGiocato.get(indice3).getSimbolo()==Simbolo.INSETTO)&& (!mazzoGiocato.get(indice3).getClass().getName().contains("Starter")) &&
 											        (indice3!=indice2)&& (X3==X2-1)&& (Y3==Y2-1)) {
+												terza = indice3;//Indice terza carta candidata al tris
+												gia_in_tris[prima]=gia_in_tris[seconda]=gia_in_tris[terza]=true;
+												
 											    p++; 
-											    System.out.println("terzo livello OK, numero di L rovesci "+p);
+											    System.out.println("Numero di L rovescio "+p);
 											    this.NumObbiettiviRaggiunti++;
 										     }
 								        }
@@ -564,35 +636,41 @@ public int getNumObbiettiviRaggiunti() {
 						System.out.println("+ " + incremento + " punti per obbiettivo L ROVESCIO");
 					break;
 				case SETTE:
-					System.out.println("Selettore sette");
+					System.out.println("Valutazione sette");
+					Arrays.fill(gia_in_tris, false);
 					for (indice1=0;indice1<(NCarte);indice1++) {
-						
-						if ((mazzoGiocato.get(indice1).getSimbolo()==Simbolo.INSETTO) && (!mazzoGiocato.get(indice1).getClass().getName().contains("Starter")) )  {
+						int prima = 0;
+						int seconda = 0;
+						int terza = 0;						
+						if (!gia_in_tris[indice1] && (mazzoGiocato.get(indice1).getSimbolo()==Simbolo.INSETTO) && (!mazzoGiocato.get(indice1).getClass().getName().contains("Starter")) )  {
 							
 							    int X1 = mazzoGiocato.get(indice1).getXrel();
 							    int Y1 = mazzoGiocato.get(indice1).getYrel();
 							    
+							    prima = indice1;//Indice prima carta candidata al tris
 							
 								for (indice2=0;indice2<(NCarte);indice2++) {
 									
 								    int X2 = mazzoGiocato.get(indice2).getXrel();
 								    int Y2 = mazzoGiocato.get(indice2).getYrel();
 									
-									if ((mazzoGiocato.get(indice2).getSimbolo()==Simbolo.INSETTO)&& (!mazzoGiocato.get(indice2).getClass().getName().contains("Starter")) &&
+									if (!gia_in_tris[indice2] && (mazzoGiocato.get(indice2).getSimbolo()==Simbolo.INSETTO)&& (!mazzoGiocato.get(indice2).getClass().getName().contains("Starter")) &&
 								        (indice2!=indice1)&& (X2==X1)&& (Y2==Y1+2)) {
 										
+										seconda = indice2;//Indice seconda carta candidata al tris
 										
 										for (indice3=0;indice3<(NCarte);indice3++) {
 											
 										    int X3 = mazzoGiocato.get(indice3).getXrel();
 										    int Y3 = mazzoGiocato.get(indice3).getYrel();
 											
-											if ((mazzoGiocato.get(indice3).getSimbolo()==Simbolo.ANIMALE)&& (!mazzoGiocato.get(indice3).getClass().getName().contains("Starter")) &&
+											if (!gia_in_tris[indice3] && (mazzoGiocato.get(indice3).getSimbolo()==Simbolo.ANIMALE)&& (!mazzoGiocato.get(indice3).getClass().getName().contains("Starter")) &&
 											        (indice3!=indice2)&& (X3==X2-1)&& (Y3==Y2+1)) {
+												terza = indice3;//Indice terza carta candidata al tris
+												gia_in_tris[prima]=gia_in_tris[seconda]=gia_in_tris[terza]=true;												
 												
-											    p++; 
-											    
-											    System.out.println("terzo livello OK, numero di sette "+p);
+											    p++;   
+											    System.out.println("Numero di sette "+p);
 											    this.NumObbiettiviRaggiunti++;
 										     }
 								        }
@@ -607,33 +685,42 @@ public int getNumObbiettiviRaggiunti() {
 						System.out.println("+ " + incremento + " punti per obbiettivo SETTE");
 					break;
 				case SETTE_ROVESCIO:
-					System.out.println("Selettore sette rovescio");
+					System.out.println("Valutazione sette rovescio");
+					Arrays.fill(gia_in_tris, false);
 					for (indice1=0;indice1<(NCarte);indice1++) {
+						int prima = 0;
+						int seconda = 0;
+						int terza = 0;							
 						
-						if ((mazzoGiocato.get(indice1).getSimbolo()==Simbolo.ANIMALE) && (!mazzoGiocato.get(indice1).getClass().getName().contains("Starter")) )  {
+						if (!gia_in_tris[indice1] && (mazzoGiocato.get(indice1).getSimbolo()==Simbolo.ANIMALE) && (!mazzoGiocato.get(indice1).getClass().getName().contains("Starter")) )  {
 							
 							    int X1 = mazzoGiocato.get(indice1).getXrel();
 							    int Y1 = mazzoGiocato.get(indice1).getYrel();
 							    
+							    prima = indice1;//Indice prima carta candidata al tris
 							
 								for (indice2=0;indice2<(NCarte);indice2++) {
 									
 								    int X2 = mazzoGiocato.get(indice2).getXrel();
 								    int Y2 = mazzoGiocato.get(indice2).getYrel();
 									
-									if ((mazzoGiocato.get(indice2).getSimbolo()==Simbolo.ANIMALE)&& (!mazzoGiocato.get(indice2).getClass().getName().contains("Starter")) &&
+									if (!gia_in_tris[indice2] && (mazzoGiocato.get(indice2).getSimbolo()==Simbolo.ANIMALE)&& (!mazzoGiocato.get(indice2).getClass().getName().contains("Starter")) &&
 								        (indice2!=indice1)&& (X2==X1)&& (Y2==Y1+2)) {
 										
+										seconda = indice2;//Indice seconda carta candidata al tris
 										
 										for (indice3=0;indice3<(NCarte);indice3++) {
 											
 										    int X3 = mazzoGiocato.get(indice3).getXrel();
 										    int Y3 = mazzoGiocato.get(indice3).getYrel();
 											
-											if ((mazzoGiocato.get(indice3).getSimbolo()==Simbolo.FUNGO)&& (!mazzoGiocato.get(indice3).getClass().getName().contains("Starter")) &&
+											if (!gia_in_tris[indice3] && (mazzoGiocato.get(indice3).getSimbolo()==Simbolo.FUNGO)&& (!mazzoGiocato.get(indice3).getClass().getName().contains("Starter")) &&
 											        (indice3!=indice2)&& (X3==X2+1)&& (Y3==Y2+1)) {
+												terza = indice3;//Indice terza carta candidata al tris
+												gia_in_tris[prima]=gia_in_tris[seconda]=gia_in_tris[terza]=true;
+																								
 											    p++; //Target raggiunto, incrementa punti
-											    System.out.println("terzo livello OK, numero di sette rovesci "+p);
+											    System.out.println("Numero di sette rovescio "+p);
 											    this.NumObbiettiviRaggiunti++;
 										     }
 								        }
