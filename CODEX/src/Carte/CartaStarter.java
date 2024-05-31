@@ -21,6 +21,17 @@ protected void AggiornaSimboliEsposti_Extra() {
 		    idx = simbolo3.ordinal();
 		    if (idx<7)
 		    	nSimboli_esposti[idx]++;
+
+ //Carte starter hanno anche simboli agli angoli sul retro
+			for (Simbolo s : Simbolo.values()) {
+				   if (s==Simbolo.VUOTO)
+					   break;
+				   
+				   for(int i = 0; i<4; i++) {
+					   if(angoli[i].simbolo == s)
+						   nSimboli_esposti[s.ordinal()]++;	   
+				   }
+			}		    
 	} 
 }    
 /**
