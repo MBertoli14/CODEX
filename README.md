@@ -11,6 +11,7 @@ Una volta clonata la repository bisogna eseguire il file main situato nella cart
 Nel gioco è presente una piccola parte grafica che consente al giocatore di vedere dove ha posizionato la carta che ha giocato.
 
 Per qualsiasi domanda o feedback, non esitare a contattarci:
-Simone Muhuho - s.muhuho@studenti.unibg.it
-Marco Bertoli - m.bertoli14@studenti.unibg.it
+- Simone Muhuho - s.muhuho@studenti.unibg.it
+- Marco Bertoli - m.bertoli14@studenti.unibg.it
+
 Grazie per il vostro tempo! Buon divertimento!
