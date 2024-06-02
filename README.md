@@ -8,7 +8,7 @@ Caratteristiche principali:
 
 Come avviare il gioco:
 
-Una volta clonata la repository bisogna eseguire il file main situato nella cartella Codex/src/ElementiDiBase/Main.java. Quando il file sarà stato eseguito basterà seguire le indicazioni che troverete in console.
+Una volta clonata la repository bisogna eseguire il file main situato nella cartella CODEX/src/ElementiDiBase/Main.java. Quando il file sarà stato eseguito basterà seguire le indicazioni che troverete in console.
 Nel gioco è presente una piccola parte grafica che consente al giocatore di vedere dove ha posizionato la carta che ha giocato.
 
 Per qualsiasi domanda o feedback, non esitare a contattarci:
