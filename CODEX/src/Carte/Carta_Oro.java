@@ -73,7 +73,7 @@ private final Moltiplicatore moltiplicatore;
 		}
 	
 		if (fronte == true)
-		   msg = "Carta Oro "+this.simbolo+"|angoli:"+s[0]+""+s[1]+""+s[2]+""+s[3]+"|costo "+costo[0]+","+costo[1]+","+costo[2]+","+costo[3]+"|punti "+Integer.toString(getPunti() & 0xF)
+		   msg = "Carta Oro "+this.simbolo+"|angoli:"+s[0]+""+s[1]+""+s[2]+""+s[3]+"|costo: animali "+costo[0]+",funghi "+costo[1]+",insetti "+costo[2]+",piante "+costo[3]+"|punti "+Integer.toString(getPunti() & 0xF)
 				+"|moltiplicatore "+ this.moltiplicatore  +"|fronte attivo " + Boolean.toString(fronte) + "||";
 		else
 		   msg = "Carta Oro "+this.simbolo+"|angoli:"+s[0]+""+s[1]+""+s[2]+""+s[3]+"|punti "+Integer.toString(getPunti() & 0xF)

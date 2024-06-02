@@ -400,7 +400,7 @@ public ArrayList<CartaObbiettivo> getObbiettivi() {
 					System.out.println("Valutazione coppia");
 					if(scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()]>=2) {
 						p=(scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()]/2)*obbiettivi.get(i).getPunti();
-						System.out.println("OK, punti coppie ="+p);
+						System.out.println("OK, punti coppie +"+p);
 						this.punti+=p;
 						this.NumObbiettiviRaggiunti++;
 					}
@@ -409,7 +409,7 @@ public ArrayList<CartaObbiettivo> getObbiettivi() {
 					System.out.println("Valutazione trio");
 					if(scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()]>=3) {
 						p=(scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()]/3)*obbiettivi.get(i).getPunti();
-						System.out.println("OK, punti trio ="+p);
+						System.out.println("OK, punti trio +"+p);
 						this.punti+=p;
 						this.NumObbiettiviRaggiunti++;
 					}
@@ -420,7 +420,6 @@ public ArrayList<CartaObbiettivo> getObbiettivi() {
 					int NBoccette=scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()+1];
 					int NPergamene=scoreboardSimboli[obbiettivi.get(i).getSimbolo().ordinal()+2];
 					if((NPiume>=1) && (NBoccette>=1) && (NPergamene>=1)) {
-						if((NPiume!=NBoccette) && (NBoccette!= NPergamene) && (NPergamene!= NPiume)) {
 							int arr[] ={NPiume,NBoccette,NPergamene};
 							int min=NPiume;
 							for(int c=0;c<3;c++) {
@@ -429,12 +428,9 @@ public ArrayList<CartaObbiettivo> getObbiettivi() {
 								}
 							}
 							p=min*obbiettivi.get(i).getPunti();
-							System.out.println("OK, punti trio unico ="+p);
+							System.out.println("OK, punti trio unico +"+p);
 							this.punti+=p;
-						}
-						else {
-							this.punti+=(NPiume)*obbiettivi.get(i).getPunti();	
-						}
+							
 						this.NumObbiettiviRaggiunti++;
 					}
 					break;

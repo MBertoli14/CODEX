@@ -39,7 +39,6 @@ public class Codex {
 	private void InitCards()
 	{
 		////////////////INIZIALIZZAZIONE CARTE RISORSA//////////////////////////////////////////////////////////////////////////////
-		
 		carteRisorsa.add(new CartaRisorsa(Simbolo.INSETTO,Simbolo.INSETTO,Simbolo.BOCCETTA,Simbolo.PIANTA,Simbolo.NO_ANGOLO,0,cart+"CarteRisorsa/carta_risorsa_fronte_1.jpg",cart+"CarteRisorsa/carta_risorsa_retro_insetti_41.jpg"));
 		carteRisorsa.add(new CartaRisorsa(Simbolo.INSETTO,Simbolo.INSETTO,Simbolo.VUOTO,Simbolo.NO_ANGOLO,Simbolo.VUOTO,1,cart+"CarteRisorsa/carta_risorsa_fronte_2.jpg",cart+"CarteRisorsa/carta_risorsa_retro_insetti_41.jpg"));
 		carteRisorsa.add(new CartaRisorsa(Simbolo.INSETTO,Simbolo.VUOTO,Simbolo.NO_ANGOLO,Simbolo.VUOTO,Simbolo.INSETTO,1,cart+"CarteRisorsa/carta_risorsa_fronte_3.jpg",cart+"CarteRisorsa/carta_risorsa_retro_insetti_41.jpg"));
@@ -84,13 +83,11 @@ public class Codex {
 		carteRisorsa.add(new CartaRisorsa(Simbolo.FUNGO,Simbolo.VUOTO,Simbolo.FUNGO,Simbolo.NO_ANGOLO,Simbolo.FUNGO,0,cart+"CarteRisorsa/carta_risorsa_fronte_39.jpg",cart+"CarteRisorsa/carta_risorsa_retro_funghi_44.jpg"));
 		carteRisorsa.add(new CartaRisorsa(Simbolo.FUNGO,Simbolo.NO_ANGOLO,Simbolo.VUOTO,Simbolo.FUNGO,Simbolo.FUNGO,0,cart+"CarteRisorsa/carta_risorsa_fronte_40.jpg",cart+"CarteRisorsa/carta_risorsa_retro_funghi_44.jpg"));
 		
-		///////////////INIZIALIZZAZIONE CARTE ORO//////////////////////////////////////////////////////////////////////////////
-		
+		///////////////INIZIALIZZAZIONE CARTE ORO//////////////////////////////////////////////////////////////////////////////		
 		carteOro.add(new Carta_Oro(Simbolo.PIANTA,Simbolo.NO_ANGOLO,Simbolo.VUOTO,Simbolo.VUOTO,Simbolo.VUOTO,2,new int[]{0,0,1,3},Moltiplicatore.ANGOLO,cart+"carteOro/carta_oro_fronte_45.jpg",cart+"carteOro/carta_oro_retro_piante_87.jpg"));
 		carteOro.add(new Carta_Oro(Simbolo.PIANTA,Simbolo.VUOTO,Simbolo.BOCCETTA,Simbolo.NO_ANGOLO,Simbolo.VUOTO,1,new int[]{1,0,0,2},Moltiplicatore.BOCCETTA,cart+"carteOro/carta_oro_fronte_46.jpg",cart+"carteOro/carta_oro_retro_piante_87.jpg"));
 		carteOro.add(new Carta_Oro(Simbolo.PIANTA,Simbolo.VUOTO,Simbolo.NO_ANGOLO,Simbolo.PERGAMENA,Simbolo.VUOTO,1,new int[]{0,1,0,2},Moltiplicatore.PERGAMENA,cart+"carteOro/carta_oro_fronte_47.jpg",cart+"carteOro/carta_oro_retro_piante_87.jpg"));
-		carteOro.add(new Carta_Oro(Simbolo.PIANTA,Simbolo.PIUMA,Simbolo.VUOTO,Simbolo.VUOTO,Simbolo.NO_ANGOLO,1,new int[]{0,0,1,2},Moltiplicatore.PIUMA,cart+"carteOro/carta_oro_fronte_48.jpg",cart+"carteOro/carta_oro_retro_piante_87.jpg"));
-		
+		carteOro.add(new Carta_Oro(Simbolo.PIANTA,Simbolo.PIUMA,Simbolo.VUOTO,Simbolo.VUOTO,Simbolo.NO_ANGOLO,1,new int[]{0,0,1,2},Moltiplicatore.PIUMA,cart+"carteOro/carta_oro_fronte_48.jpg",cart+"carteOro/carta_oro_retro_piante_87.jpg"));		
 		carteOro.add(new Carta_Oro(Simbolo.PIANTA,Simbolo.PERGAMENA,Simbolo.NO_ANGOLO,Simbolo.VUOTO,Simbolo.NO_ANGOLO,3,new int[]{0,0,0,3},Moltiplicatore.NESSUNO,cart+"carteOro/carta_oro_fronte_49.jpg",cart+"carteOro/carta_oro_retro_piante_87.jpg"));
 		carteOro.add(new Carta_Oro(Simbolo.PIANTA,Simbolo.VUOTO,Simbolo.PIUMA,Simbolo.NO_ANGOLO,Simbolo.NO_ANGOLO,3,new int[]{0,0,0,3},Moltiplicatore.NESSUNO,cart+"carteOro/carta_oro_fronte_50.jpg",cart+"carteOro/carta_oro_retro_piante_87.jpg"));
 		carteOro.add(new Carta_Oro(Simbolo.PIANTA,Simbolo.VUOTO,Simbolo.VUOTO,Simbolo.NO_ANGOLO,Simbolo.VUOTO,2,new int[]{0,1,0,3},Moltiplicatore.ANGOLO,cart+"carteOro/carta_oro_fronte_51.jpg",cart+"carteOro/carta_oro_retro_piante_87.jpg"));
@@ -102,7 +99,7 @@ public class Codex {
 		carteOro.add(new Carta_Oro(Simbolo.FUNGO,Simbolo.VUOTO,Simbolo.VUOTO,Simbolo.NO_ANGOLO,Simbolo.NO_ANGOLO,5,new int[]{0,5,0,0},Moltiplicatore.NESSUNO,cart+"carteOro/carta_oro_fronte_56.jpg",cart+"carteOro/carta_oro_retro_funghi_88.jpg"));
 		carteOro.add(new Carta_Oro(Simbolo.FUNGO,Simbolo.VUOTO,Simbolo.VUOTO,Simbolo.VUOTO,Simbolo.NO_ANGOLO,2,new int[]{0,3,0,1},Moltiplicatore.ANGOLO,cart+"carteOro/carta_oro_fronte_57.jpg",cart+"carteOro/carta_oro_retro_funghi_88.jpg"));
 		carteOro.add(new Carta_Oro(Simbolo.FUNGO,Simbolo.VUOTO,Simbolo.VUOTO,Simbolo.NO_ANGOLO,Simbolo.VUOTO,2,new int[]{0,3,1,0},Moltiplicatore.ANGOLO,cart+"carteOro/carta_oro_fronte_58.jpg",cart+"carteOro/carta_oro_retro_funghi_88.jpg"));
-		carteOro.add(new Carta_Oro(Simbolo.FUNGO,Simbolo.VUOTO,Simbolo.PERGAMENA,Simbolo.NO_ANGOLO,Simbolo.NO_ANGOLO,3,new int[]{0,3,0,0},Moltiplicatore.NESSUNO,cart+"carteOro/carta_oro_fronte_59.jpg",cart+"carteOro/carta_oro_retro_funghi_88.jpg"));
+		carteOro.add(new Carta_Oro(Simbolo.FUNGO,Simbolo.VUOTO,Simbolo.BOCCETTA,Simbolo.NO_ANGOLO,Simbolo.NO_ANGOLO,3,new int[]{0,3,0,0},Moltiplicatore.NESSUNO,cart+"carteOro/carta_oro_fronte_59.jpg",cart+"carteOro/carta_oro_retro_funghi_88.jpg"));
 		carteOro.add(new Carta_Oro(Simbolo.FUNGO,Simbolo.PIUMA,Simbolo.NO_ANGOLO,Simbolo.VUOTO,Simbolo.NO_ANGOLO,3,new int[]{0,3,0,0},Moltiplicatore.NESSUNO,cart+"carteOro/carta_oro_fronte_60.jpg",cart+"carteOro/carta_oro_retro_funghi_88.jpg"));
 		carteOro.add(new Carta_Oro(Simbolo.FUNGO,Simbolo.NO_ANGOLO,Simbolo.VUOTO,Simbolo.VUOTO,Simbolo.PIUMA,1,new int[]{1,2,0,0},Moltiplicatore.PIUMA,cart+"carteOro/carta_oro_fronte_61.jpg",cart+"carteOro/carta_oro_retro_funghi_88.jpg"));
 		carteOro.add(new Carta_Oro(Simbolo.FUNGO,Simbolo.VUOTO,Simbolo.NO_ANGOLO,Simbolo.BOCCETTA,Simbolo.VUOTO,1,new int[]{0,2,0,1},Moltiplicatore.BOCCETTA,cart+"carteOro/carta_oro_fronte_62.jpg",cart+"carteOro/carta_oro_retro_funghi_88.jpg"));
@@ -111,7 +108,7 @@ public class Codex {
 		
 		carteOro.add(new Carta_Oro(Simbolo.ANIMALE,Simbolo.VUOTO,Simbolo.NO_ANGOLO,Simbolo.VUOTO,Simbolo.VUOTO,2,new int[]{3,0,1,0},Moltiplicatore.ANGOLO,cart+"carteOro/carta_oro_fronte_65.jpg",cart+"carteOro/carta_oro_retro_animali_85.jpg"));
 		carteOro.add(new Carta_Oro(Simbolo.ANIMALE,Simbolo.VUOTO,Simbolo.PIUMA,Simbolo.NO_ANGOLO,Simbolo.VUOTO,1,new int[]{2,1,0,0},Moltiplicatore.PIUMA,cart+"carteOro/carta_oro_fronte_66.jpg",cart+"carteOro/carta_oro_retro_animali_85.jpg"));
-		carteOro.add(new Carta_Oro(Simbolo.ANIMALE,Simbolo.NO_ANGOLO,Simbolo.VUOTO,Simbolo.VUOTO,Simbolo.PERGAMENA,1,new int[]{2,1,0,0},Moltiplicatore.PERGAMENA,cart+"carteOro/carta_oro_fronte_67.jpg",cart+"carteOro/carta_oro_retro_animali_85.jpg"));
+		carteOro.add(new Carta_Oro(Simbolo.ANIMALE,Simbolo.NO_ANGOLO,Simbolo.VUOTO,Simbolo.VUOTO,Simbolo.PERGAMENA,1,new int[]{2,0,0,1},Moltiplicatore.PERGAMENA,cart+"carteOro/carta_oro_fronte_67.jpg",cart+"carteOro/carta_oro_retro_animali_85.jpg"));
 		carteOro.add(new Carta_Oro(Simbolo.ANIMALE,Simbolo.BOCCETTA,Simbolo.VUOTO,Simbolo.VUOTO,Simbolo.NO_ANGOLO,1,new int[]{2,0,1,0},Moltiplicatore.BOCCETTA,cart+"carteOro/carta_oro_fronte_68.jpg",cart+"carteOro/carta_oro_retro_animali_85.jpg"));
 		carteOro.add(new Carta_Oro(Simbolo.ANIMALE,Simbolo.VUOTO,Simbolo.NO_ANGOLO,Simbolo.BOCCETTA,Simbolo.NO_ANGOLO,3,new int[]{3,0,0,0},Moltiplicatore.NESSUNO,cart+"carteOro/carta_oro_fronte_69.jpg",cart+"carteOro/carta_oro_retro_animali_85.jpg"));
 		carteOro.add(new Carta_Oro(Simbolo.ANIMALE,Simbolo.VUOTO,Simbolo.PERGAMENA,Simbolo.NO_ANGOLO,Simbolo.NO_ANGOLO,3,new int[]{3,0,0,0},Moltiplicatore.NESSUNO,cart+"carteOro/carta_oro_fronte_70.jpg",cart+"carteOro/carta_oro_retro_animali_85.jpg"));
@@ -125,14 +122,12 @@ public class Codex {
 		carteOro.add(new Carta_Oro(Simbolo.INSETTO,Simbolo.VUOTO,Simbolo.VUOTO,Simbolo.NO_ANGOLO,Simbolo.VUOTO,2,new int[]{0,1,3,0},Moltiplicatore.ANGOLO,cart+"carteOro/carta_oro_fronte_77.jpg",cart+"carteOro/carta_oro_retro_insetti_86.jpg"));
 		carteOro.add(new Carta_Oro(Simbolo.INSETTO,Simbolo.VUOTO,Simbolo.VUOTO,Simbolo.VUOTO,Simbolo.NO_ANGOLO,2,new int[]{0,0,3,1},Moltiplicatore.ANGOLO,cart+"carteOro/carta_oro_fronte_78.jpg",cart+"carteOro/carta_oro_retro_insetti_86.jpg"));
 		carteOro.add(new Carta_Oro(Simbolo.INSETTO,Simbolo.VUOTO,Simbolo.NO_ANGOLO,Simbolo.VUOTO,Simbolo.VUOTO,2,new int[]{1,0,3,0},Moltiplicatore.ANGOLO,cart+"carteOro/carta_oro_fronte_79.jpg",cart+"carteOro/carta_oro_retro_insetti_86.jpg"));
-		carteOro.add(new Carta_Oro(Simbolo.INSETTO,Simbolo.NO_ANGOLO,Simbolo.VUOTO,Simbolo.VUOTO,Simbolo.BOCCETTA,1,new int[]{1,0,2,0},Moltiplicatore.BOCCETTA,cart+"carteOro/carta_oro_fronte_80.jpg",cart+"carteOro/carta_oro_retro_insetti_86.jpg"));
+		carteOro.add(new Carta_Oro(Simbolo.INSETTO,Simbolo.NO_ANGOLO,Simbolo.VUOTO,Simbolo.VUOTO,Simbolo.BOCCETTA,1,new int[]{0,1,2,0},Moltiplicatore.BOCCETTA,cart+"carteOro/carta_oro_fronte_80.jpg",cart+"carteOro/carta_oro_retro_insetti_86.jpg"));
 		carteOro.add(new Carta_Oro(Simbolo.INSETTO,Simbolo.VUOTO,Simbolo.NO_ANGOLO,Simbolo.VUOTO,Simbolo.NO_ANGOLO,5,new int[]{0,0,5,0},Moltiplicatore.NESSUNO,cart+"carteOro/carta_oro_fronte_81.jpg",cart+"carteOro/carta_oro_retro_insetti_86.jpg"));
 		carteOro.add(new Carta_Oro(Simbolo.INSETTO,Simbolo.NO_ANGOLO,Simbolo.PIUMA,Simbolo.NO_ANGOLO,Simbolo.VUOTO,3,new int[]{0,0,3,0},Moltiplicatore.NESSUNO,cart+"carteOro/carta_oro_fronte_82.jpg",cart+"carteOro/carta_oro_retro_insetti_86.jpg"));
 		carteOro.add(new Carta_Oro(Simbolo.INSETTO,Simbolo.VUOTO,Simbolo.NO_ANGOLO,Simbolo.PERGAMENA,Simbolo.NO_ANGOLO,3,new int[]{0,0,3,0},Moltiplicatore.NESSUNO,cart+"carteOro/carta_oro_fronte_83.jpg",cart+"carteOro/carta_oro_retro_insetti_86.jpg"));
 		carteOro.add(new Carta_Oro(Simbolo.INSETTO,Simbolo.BOCCETTA,Simbolo.VUOTO,Simbolo.NO_ANGOLO,Simbolo.NO_ANGOLO,3,new int[]{0,0,3,0},Moltiplicatore.NESSUNO,cart+"carteOro/carta_oro_fronte_84.jpg",cart+"carteOro/carta_oro_retro_insetti_86.jpg"));
-
-	
-	
+		
 		///////////////INIZIALIZZAZIONE CARTE STARTER//////////////////////////////////////////////////////////////////////////////
 		Simbolo s1_ang_fronte[] = new Simbolo[]{Simbolo.FUNGO,Simbolo.INSETTO,Simbolo.PIANTA,Simbolo.ANIMALE};
 		Simbolo s1_ang_retro[] = new Simbolo[]{Simbolo.VUOTO,Simbolo.INSETTO,Simbolo.PIANTA,Simbolo.VUOTO};
@@ -153,8 +148,6 @@ public class Codex {
 		Simbolo s6_ang_retro[] = new Simbolo[]{Simbolo.VUOTO,Simbolo.NO_ANGOLO,Simbolo.VUOTO,Simbolo.NO_ANGOLO};
 		carteStarter.add(new CartaStarter(Simbolo.ANIMALE, Simbolo.FUNGO, Simbolo.PIANTA, s6_ang_fronte,s6_ang_retro,cart+"CarteStarter/carta_starter_fronte_94.jpg",cart+"CarteStarter/carta_starter_retro_100.jpg"));		
 
-		
-		
 		///////////////INIZIALIZZAZIONE CARTE OBBIETTIVO//////////////////////////////////////////////////////////////////////////////
 		carteObbiettivo.add(new CartaObbiettivo(Simbolo.INSETTO,Obbiettivo.SCALA_DISCENDENTE ,2,cart+"CarteObbiettivo/carta_obbiettivo_fronte_101.jpg"));
 		carteObbiettivo.add(new CartaObbiettivo(Simbolo.ANIMALE,Obbiettivo.SCALA_ASCENDENTE ,2,cart+"CarteObbiettivo/carta_obbiettivo_fronte_102.jpg"));
@@ -413,7 +406,7 @@ public class Codex {
 		objframe.setVisible(false);	
 		
 		JFrame frame = buildFrame("CODEX : tavolo del giocatore di turno");
-		MyPanel panel = new MyPanel(450,450);
+		MyPanel panel = new MyPanel(520,560);
 	    panel.setBackground(Color.gray); 
 	    JScrollPane scroller = new JScrollPane(panel);
 	    scroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
@@ -658,7 +651,9 @@ public class Codex {
 		        	   
 	       		   } else if (punteggio20Raggiunto)
 	       			   System.out.println("20 punti sono stati raggiunti prosegui con opzione 8");
-	       		     else
+	       		     else if (((dim_cr + dim_co)) == 0)
+	       		       System.out.println("I mazzi sul tavolo sono vuoti e non si puo' piu' prelevare se hai gia' tirato prosegui con l'opzione 8");	 
+	       		     else	 
 	       			   System.out.println("Se sei qui' il prelievo e' gia' stato effettuato oppure devi prima giocare la carta (opzione 4)");
 	        	   break;
 	           case 7:
@@ -689,7 +684,7 @@ public class Codex {
 		   } 		   
 		  }
 		
-			System.out.println("ORA AGGIUGERE PUNTI OBBIETTIVO AI MAZZI GIOCATI E DECRETARE IL VINCITORE !!!");
+			System.out.println("AGGIUNTA DEI PUNTI OBBIETTIVO AI MAZZI GIOCATI E DETERMINAZIONE DEL VINCITORE !!!");
 			for(int i=0;i<nPlayer;i++) {
 				  giocatori.get(i).CalcoloObbiettivo();
 				}			
